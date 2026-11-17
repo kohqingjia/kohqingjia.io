@@ -48,6 +48,8 @@ export const education: Education[] = [
     location: 'Singapore',
     start: '2024-08',
     points: [
+      'Tracks: Business Analytics; Smart-City Management & Technology',
+      'Second Major: Computing Studies (Artificial Intelligence track)',
       'Coursework: Generative AI with LLMs, AI Fundamentals, Analytics Foundation, Modelling and Data Analytics, Data Management, Software Project Management',
       'Hack For Cities 2026 Finalist, Most Innovative Solution',
       'Excel Master Challenge 2026 Finalist',

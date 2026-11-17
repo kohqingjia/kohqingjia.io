@@ -15,7 +15,10 @@ export const site = {
     'I relaunched treatsure.co in 9 weeks as the human lead of a Claude Code agent workflow. At Promyro I built an energy management system from the ground up in 12 weeks. At SMU I lead the development of ClassPart AI, a multi-agent assessment system.',
   ],
   facts: [
-    { label: 'Studying', value: 'BSc Information Systems, SMU' },
+    // Wording follows SMU SCIS: tracks within the IS major (AY2023+), 2nd major Computing Studies (AI track).
+    { label: 'Studying', value: 'BSc (Information Systems), SMU' },
+    { label: 'Tracks', value: 'Business Analytics · Smart-City Management & Technology' },
+    { label: 'Second major', value: 'Computing Studies (Artificial Intelligence)' },
     { label: 'Focus', value: 'Agentic AI · Full stack · Data' },
     { label: 'Languages', value: 'English · Mandarin Chinese' },
     { label: 'Open to', value: 'Product, data and AI engineering roles' },
