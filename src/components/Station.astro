@@ -6,9 +6,14 @@ import type { Project } from '../data/projects';
 import { period } from '../data/projects';
 import { statusLabel } from '../data/site';
 import Sprite from './Sprite.astro';
+import Shot from './Shot.astro';
 
-interface Props { project: Project; index: number; headingLevel?: 'h2' | 'h3' }
-const { project, index, headingLevel: H = 'h3' } = Astro.props;
+interface Props {
+  project: Project; index: number; headingLevel?: 'h2' | 'h3';
+  /** Codex: set true once .station__preview is styled. */
+  preview?: boolean;
+}
+const { project, index, headingLevel: H = 'h3', preview = false } = Astro.props;
 const d = project.data;
 ---
 <article
@@ -30,4 +35,9 @@ const d = project.data;
     <p class="station__tagline">{d.tagline}</p>
     <p class="station__role">{d.role}{d.org && <> · {d.org}</>}</p>
   </div>
+  {preview && d.cover && (
+    <div class="station__preview" data-preview aria-hidden="true">
+      <Shot src={d.cover.src} alt="" variant="thumb" />
+    </div>
+  )}
 </article>

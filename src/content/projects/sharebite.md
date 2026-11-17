@@ -11,5 +11,10 @@ stack: [JavaScript, Firebase]
 links:
   - { label: Live app, href: "https://wad-g5-t9-share-bite.vercel.app", kind: live }
 order: 110
+cover:
+  src: ./media/sharebite/home.jpg
+  alt: "ShareBite home page: find food near you or share your food"
+gallery:
+  - { src: ./media/sharebite/features.jpg, alt: "Slide listing ShareBite's six core features", caption: "The six core features" }
 sprite: sharebite.svg
 ---

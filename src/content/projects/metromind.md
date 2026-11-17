@@ -11,6 +11,12 @@ team: 6
 stack: [Python, LLM agents]
 featured: true
 order: 50
+cover:
+  src: ./media/metromind/dashboard.png
+  alt: "MetroMind dashboard: Singapore demand map, forecasts and agent activity"
+gallery:
+  - { src: ./media/metromind/agent-pipeline.jpg, alt: "Slide showing five agents working as a pipeline", caption: "Monitor, Planner, Policy, Coordinator, Executor" }
+  - { src: ./media/metromind/forecasting.jpg, alt: "Slide explaining how the forecasting works", caption: "How the forecasting works" }
 sprite: metromind.svg
 ---
 

@@ -13,6 +13,13 @@ links:
   - { label: Source on GitHub, href: "https://github.com/kohqingjia/classpartai", kind: repo }
 featured: true
 order: 20
+cover:
+  src: ./media/classpartai/home.jpg
+  alt: "ClassPart AI home: class setup checklist and recent seminar sessions"
+gallery:
+  - { src: ./media/classpartai/how-it-works.jpg, alt: "How it works page tracing the agents from listener to delivery", caption: "How it works: the agents and what each one checks" }
+  - { src: ./media/classpartai/agent-workspace.png, alt: "Assessment workspace showing the seven agent stages for a seminar", caption: "Seven agent stages, from listener to delivery" }
+  - { src: ./media/classpartai/evidence.png, alt: "Evidence step: research agent tracing every grade back to a passage", caption: "Every grade traces back to a passage and a citation" }
 sprite: classpartai.svg
 ---
 

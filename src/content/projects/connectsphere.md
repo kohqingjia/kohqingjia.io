@@ -10,6 +10,11 @@ team: 6
 stack: [TypeScript, PostgreSQL, Playwright, Linear]
 featured: true
 order: 2
+cover:
+  src: ./media/connectsphere/c4-container.png
+  alt: "C4 container diagram of ConnectSphere"
+gallery:
+  - { src: ./media/connectsphere/c4-context.png, alt: "C4 context diagram showing every user role around ConnectSphere", caption: "System context: every role the platform serves" }
 sprite: connectsphere.svg
 ---
 

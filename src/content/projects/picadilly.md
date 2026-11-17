@@ -11,5 +11,8 @@ stack: [Next.js, OpenAI API]
 links:
   - { label: Source on GitHub, href: "https://github.com/kohqingjia/DBTTsingaporesuits", kind: repo }
 order: 80
+cover:
+  src: ./media/picadilly/title.jpg
+  alt: "Picadilly Tailors project title slide"
 sprite: picadilly.svg
 ---
