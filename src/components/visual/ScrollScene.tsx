@@ -8,26 +8,25 @@ export default function ScrollScene() {
         <span className="scroll-scene__ground" />
         <img
           className="scroll-scene__card scroll-scene__king"
-          src="/sprites/scene-king.svg"
+          src="/sprites/scene-king-support.svg"
           width="64"
           height="64"
           alt=""
         />
         <img
           className="scroll-scene__card scroll-scene__queen"
-          src="/sprites/scene-queen.svg"
+          src="/sprites/scene-queen-support.svg"
           width="64"
           height="64"
           alt=""
         />
         <img
           className="scroll-scene__card scroll-scene__jack"
-          src="/sprites/scene-jack.svg"
+          src="/sprites/scene-jack-top.svg"
           width="64"
           height="64"
           alt=""
         />
-        <span className="scroll-scene__window" />
         <img
           className="scroll-scene__helper"
           src="/sprites/buddy.svg"
