@@ -121,8 +121,12 @@ export const skills: SkillGroup[] = [
 export const awards: Award[] = [
   { title: 'Hack For Cities 2026', detail: 'Finalist, Most Innovative Solution', year: '2026', project: 'metromind' },
   { title: 'Excel Master Challenge 2026', detail: 'Finalist', year: '2026' },
-  { title: 'Hackomania 2026', detail: 'Participant, SP Group energy track', year: '2026', project: 'blockbattles' },
-  { title: 'SBS Transit Hackathon 2025', detail: 'Participant', year: '2025' },
+];
+
+/** Hackathons QJ took part in without placing. Render as one quiet line, not as award cards. */
+export const alsoParticipated: { title: string; year: string; project?: string }[] = [
+  { title: 'Hackomania 2026', year: '2026', project: 'blockbattles' },
+  { title: 'SBS Transit Hackathon 2025', year: '2025' },
 ];
 
 export const activities: Activity[] = [
