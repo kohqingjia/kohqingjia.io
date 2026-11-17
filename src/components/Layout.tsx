@@ -7,7 +7,7 @@ import ThemeToggle from './ThemeToggle';
 import { DeckMark } from './NameDeck';
 const nav = [
   { to: '/#about', label: 'About', icon: 'about' },
-  { to: '/#experience', label: 'Journey', icon: 'experience' },
+  { to: '/#experience', label: 'Experience', icon: 'experience' },
   { to: '/projects', label: 'Projects', icon: 'projects' },
   { to: '/#skills', label: 'Skills', icon: 'skills' },
   { to: '/#contact', label: 'Contact', icon: 'contact' },
