@@ -258,7 +258,7 @@ export const projects: Project[] = [
     role: "Solo developer",
     start: "2026-10",
     stack: ["Swift", "Core Motion", "FastAPI", "PostgreSQL"],
-    links: [{"label": "Source on GitHub", "href": "https://github.com/kohqingjia/silentlink", "kind": "repo"}, {"label": "Research dashboard", "href": "https://silentlink.187-52-125-31.sslip.io", "kind": "live"}],
+    links: [{"label": "Source on GitHub", "href": "https://github.com/kohqingjia/silentlink", "kind": "repo"}, {"label": "Research dashboard", "href": "https://silentlink.kohqingjia.io", "kind": "live"}],
     featured: true,
     order: 1,
     cover: { src: silentlink_dashboard, alt: "SilentLink research workspace overview", width: 1600, height: 1000 },
