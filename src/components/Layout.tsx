@@ -94,10 +94,11 @@ export default function Layout() {
           </li>
         </ul>
       </footer>
+      {/* Match the reset layer so this also overrides Tailwind’s important hidden rule. */}
       <noscript>
         <style>
           {
-            '.journey-panel[hidden]{display:block}.journey-tabs,.theme-toggle{display:none}.journey-panel+.journey-panel{margin-top:32px}'
+            '@layer base{.journey-panel[hidden]{display:block!important}}.journey-tabs,.theme-toggle{display:none}.journey-panel+.journey-panel{margin-top:32px}'
           }
         </style>
       </noscript>
