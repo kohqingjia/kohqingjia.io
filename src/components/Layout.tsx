@@ -1,6 +1,7 @@
 // Visual shell; routes, native fragment links and landmarks remain stable.
 import { useRef } from 'react';
-import { Link, Outlet, ScrollRestoration } from 'react-router';
+import { Link, Outlet, ScrollRestoration, useLocation } from 'react-router';
+import type { MouseEvent } from 'react';
 import { site } from '../data/site';
 import PixelIcon, { type PixelIconName } from './PixelIcon';
 import ThemeToggle from './ThemeToggle';
@@ -13,19 +14,28 @@ const nav = [
 ];
 export default function Layout() {
   const menu = useRef<HTMLDetailsElement>(null);
+  const { pathname } = useLocation();
+  // Router links (no full reloads). A section link on the page you're already on
+  // glides to the section instead of teleporting; other pages navigate instantly
+  // (a view transition here froze 100 ms+ while the big pages render) and ScrollRestoration lands on the #hash.
+  const onNav = (to: string) => (e: MouseEvent<HTMLAnchorElement>) => {
+    if (menu.current) menu.current.open = false;
+    const [path, hash] = to.split('#');
+    if (!hash || path !== pathname || e.metaKey || e.ctrlKey || e.shiftKey || e.button !== 0) return;
+    const target = document.getElementById(hash);
+    if (!target) return;
+    e.preventDefault();
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    target.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
+    history.pushState(history.state, '', `#${hash}`);
+  };
   const links = (
     <>
       {nav.map((n) => (
-        <a
-          key={n.to}
-          href={n.to}
-          onClick={() => {
-            if (menu.current) menu.current.open = false;
-          }}
-        >
+        <Link key={n.to} to={n.to} onClick={onNav(n.to)}>
           <PixelIcon name={n.icon as PixelIconName} />
           {n.label}
-        </a>
+        </Link>
       ))}
       <a className="nav-resume" href={site.links.resume}>
         Résumé<span className="sr-only"> (PDF)</span>
