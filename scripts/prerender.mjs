@@ -1,7 +1,7 @@
 // OWNER: Claude. Post-build: give every route its own index.html with the right
 // <title>, description, canonical and Open Graph tags, so link previews (LinkedIn,
 // WhatsApp, Slack) and search engines see real titles, and every route returns 200.
-// The React app still renders the body client-side.
+// Each page body is rendered by React on the server (entry-server.tsx); the browser hydrates it.
 import { readFile, writeFile, mkdir } from 'node:fs/promises';
 import { build } from 'vite';
 
@@ -9,22 +9,23 @@ const SITE = 'https://kohqingjia.io';
 const dist = new URL('../dist/', import.meta.url);
 const template = await readFile(new URL('index.html', dist), 'utf8');
 
-// Load the project list via a tiny Vite SSR build of the data module (handles TS + image imports).
+// Build the server renderer (src/entry-server.tsx) with the project's own Vite config,
+// so image imports resolve to the same hashed /assets URLs as the browser build.
 await build({
   logLevel: 'warn',
-  configFile: false,
   build: {
-    ssr: new URL('../src/lib/projects.ts', import.meta.url).pathname,
-    outDir: new URL('../node_modules/.prerender/', import.meta.url).pathname,
+    ssr: 'src/entry-server.tsx',
+    outDir: 'node_modules/.prerender',
     emptyOutDir: true,
-    rollupOptions: { output: { format: 'esm', entryFileNames: 'projects.mjs' } },
+    copyPublicDir: false,
+    rollupOptions: { output: { format: 'esm', entryFileNames: 'entry-server.mjs' } },
   },
 });
-const { allProjects } = await import(new URL('../node_modules/.prerender/projects.mjs', import.meta.url));
+const { render, allProjects } = await import(new URL('../node_modules/.prerender/entry-server.mjs', import.meta.url));
 
 const esc = (s) => s.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;');
 
-function page({ path, title, description, image = '/og.png' }) {
+async function page({ path, title, description, image = '/og.png' }, renderPath = path) {
   const url = SITE + path;
   const head = [
     `<title>${esc(title)}</title>`,
@@ -37,7 +38,10 @@ function page({ path, title, description, image = '/og.png' }) {
     `<meta property="og:image" content="${SITE}${image}" />`,
     `<meta name="twitter:card" content="summary_large_image" />`,
   ].join('\n    ');
-  return template.replace(/<title>.*?<\/title>/s, head);
+  const body = await render(renderPath);
+  return template
+    .replace(/<title>.*?<\/title>/s, head)
+    .replace('<div id="root"></div>', `<div id="root">${body}</div>`);
 }
 
 const NAME = 'Koh Qing Jia';
@@ -50,9 +54,12 @@ const routes = [
 for (const r of routes) {
   const dir = r.path === '/' ? dist : new URL(`.${r.path}/`, dist);
   await mkdir(dir, { recursive: true });
-  await writeFile(new URL('index.html', dir), page(r));
+  await writeFile(new URL('index.html', dir), await page(r));
 }
-await writeFile(new URL('404.html', dist), page({ path: '/404', title: `Not found · ${NAME}`, description: 'No page lives here.' }));
+await writeFile(
+  new URL('404.html', dist),
+  await page({ path: '/404', title: `Not found · ${NAME}`, description: 'No page lives here.' }, '/__not-found__'),
+);
 
 // sitemap.xml + robots.txt
 const urls = routes.map((r) => `  <url><loc>${SITE}${r.path}</loc></url>`).join('\n');

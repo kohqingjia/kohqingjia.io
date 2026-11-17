@@ -16,6 +16,13 @@ jobs:
           for loc in $(grep -o '<loc>[^<]*' dist/sitemap.xml | sed 's|<loc>https://kohqingjia.io||'); do
             test -f "dist${loc%/}/index.html" || { echo "missing prerendered page for $loc"; exit 1; }
           done
+      - name: Every prerendered page has real content (no empty SPA shell)
+        run: |
+          for f in $(find dist -name index.html) dist/404.html; do
+            grep -q '<div id="root"><' "$f" || { echo "empty root in $f"; exit 1; }
+            grep -q '<h1' "$f" || { echo "no <h1> in $f"; exit 1; }
+            ! grep -q '__staticRouterHydrationData' "$f" || { echo "router hydration script leaked into $f"; exit 1; }
+          done
       - name: JS budget (gzip < 160 KB)
         run: |
           size=$(cat dist/assets/*.js | gzip -c | wc -c)
