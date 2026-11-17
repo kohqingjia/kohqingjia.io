@@ -3,8 +3,12 @@
 :80 {
 	root * /srv
 	encode zstd gzip
-	@assets path /_astro/* /sprites/* /fonts/*
-	header @assets Cache-Control "public, max-age=31536000, immutable"
+	# Vite's hashed bundles and versioned font files never change: cache for a year.
+	@immutable path /assets/* /fonts/*
+	header @immutable Cache-Control "public, max-age=31536000, immutable"
+	# Sprites and share images keep their names when edited: cache for a day.
+	@daily path /sprites/* /og/* /icons/*
+	header @daily Cache-Control "public, max-age=86400"
 	header {
 		X-Content-Type-Options nosniff
 		Referrer-Policy strict-origin-when-cross-origin

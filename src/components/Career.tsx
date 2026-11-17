@@ -26,7 +26,7 @@ export default function Career({
   }
   return (
     <>
-      <div role="tablist" aria-label="Journey" className="journey-tabs">
+      <div role="tablist" aria-label="Experience and education" className="journey-tabs">
         {(['experience', 'education'] as const).map((t) => (
           <button
             key={t}

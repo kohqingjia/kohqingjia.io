@@ -19,9 +19,7 @@ export default function ProjectCard({
       data-status={p.status}
       data-kind={p.kind}
     >
-      <div
-        className={`project-card__visual ${p.cover ? '' : 'project-card__visual--object'}`}
-      >
+      <div className={`project-card__visual ${p.cover ? '' : 'project-card__visual--object'}`}>
         {p.cover && (
           <div className="project-card__preview">
             <img
@@ -45,9 +43,7 @@ export default function ProjectCard({
           <span className="status" data-status={p.status}>
             {statusLabel[p.status]}
           </span>
-          <span>
-            {projectPeriod(p)}
-          </span>
+          <span>{projectPeriod(p)}</span>
         </p>
         <h3>
           <Link to={`/${p.slug}`} viewTransition>
@@ -55,16 +51,18 @@ export default function ProjectCard({
           </Link>
         </h3>
         <p className="project-card__tagline">{p.tagline}</p>
-        <ul className="project-card__links">
-          {p.links.slice(0, 2).map((l) => (
-            <li key={l.href}>
-              <a href={l.href} data-link-kind={l.kind} rel="noopener">
-                {l.label}
-                <span aria-hidden="true">↗</span>
-              </a>
-            </li>
-          ))}
-        </ul>
+        {p.links.length > 0 && (
+          <ul className="project-card__links">
+            {p.links.slice(0, 2).map((l) => (
+              <li key={l.href}>
+                <a href={l.href} data-link-kind={l.kind} rel="noopener">
+                  {l.label}
+                  <span aria-hidden="true">↗</span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        )}
       </div>
     </article>
   );

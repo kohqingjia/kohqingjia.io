@@ -3,6 +3,7 @@
 // WhatsApp, Slack) and search engines see real titles, and every route returns 200.
 // Each page body is rendered by React on the server (entry-server.tsx); the browser hydrates it.
 import { readFile, writeFile, mkdir } from 'node:fs/promises';
+import { existsSync } from 'node:fs';
 import { build } from 'vite';
 
 const SITE = 'https://kohqingjia.io';
@@ -21,34 +22,47 @@ await build({
     rollupOptions: { output: { format: 'esm', entryFileNames: 'entry-server.mjs' } },
   },
 });
-const { render, allProjects } = await import(new URL('../node_modules/.prerender/entry-server.mjs', import.meta.url));
+const { render, allProjects, site } = await import(new URL('../node_modules/.prerender/entry-server.mjs', import.meta.url));
 
 const esc = (s) => s.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;');
 
-async function page({ path, title, description, image = '/og.png' }, renderPath = path) {
+async function page({ path, title, description, image = '/og.png', noindex = false, jsonLd }, renderPath = path) {
   const url = SITE + path;
   const head = [
     `<title>${esc(title)}</title>`,
     `<meta name="description" content="${esc(description)}" />`,
-    `<link rel="canonical" href="${url}" />`,
+    noindex ? `<meta name="robots" content="noindex" />` : `<link rel="canonical" href="${url}" />`,
     `<meta property="og:type" content="website" />`,
     `<meta property="og:title" content="${esc(title)}" />`,
     `<meta property="og:description" content="${esc(description)}" />`,
     `<meta property="og:url" content="${url}" />`,
     `<meta property="og:image" content="${SITE}${image}" />`,
     `<meta name="twitter:card" content="summary_large_image" />`,
-  ].join('\n    ');
+    jsonLd && `<script type="application/ld+json">${JSON.stringify(jsonLd).replace(/</g, '\\u003c')}</script>`,
+  ].filter(Boolean).join('\n    ');
   const body = await render(renderPath);
   return template
     .replace(/<title>.*?<\/title>/s, head)
     .replace('<div id="root"></div>', `<div id="root">${body}</div>`);
 }
 
-const NAME = 'Koh Qing Jia';
+const NAME = site.name;
+// Share image per project: the JPEG from scripts/og-images.py, else the site card.
+const ogFor = (slug) => (existsSync(new URL(`../public/og/${slug}.jpg`, import.meta.url)) ? `/og/${slug}.jpg` : '/og.png');
+// Structured data for search engines, built only from facts already on the site.
+const person = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: NAME,
+  url: `${SITE}/`,
+  image: `${SITE}/og.png`,
+  alumniOf: { '@type': 'CollegeOrUniversity', name: 'Singapore Management University' },
+  sameAs: [site.links.github, site.links.linkedin],
+};
 const routes = [
-  { path: '/', title: NAME, description: 'Information Systems student at SMU. I build AI agents, data products and the software around them.' },
+  { path: '/', title: NAME, description: 'Information Systems student at SMU. I build AI agents, data products and the software around them.', jsonLd: person },
   { path: '/projects', title: `Projects · ${NAME}`, description: `Everything ${NAME} has built or is building, with links and screenshots.` },
-  ...allProjects.map((p) => ({ path: `/${p.slug}`, title: `${p.title} · ${NAME}`, description: p.tagline, image: p.cover?.src })),
+  ...allProjects.map((p) => ({ path: `/${p.slug}`, title: `${p.title} · ${NAME}`, description: p.tagline, image: ogFor(p.slug) })),
 ];
 
 for (const r of routes) {
@@ -58,7 +72,7 @@ for (const r of routes) {
 }
 await writeFile(
   new URL('404.html', dist),
-  await page({ path: '/404', title: `Not found · ${NAME}`, description: 'No page lives here.' }, '/__not-found__'),
+  await page({ path: '/404', title: `Not found · ${NAME}`, description: 'No page lives here.', noindex: true }, '/__not-found__'),
 );
 
 // sitemap.xml + robots.txt

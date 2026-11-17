@@ -184,7 +184,7 @@ export const projects: Project[] = [
     featured: false,
     order: 130,
     gallery: [],
-    sections: [{"heading": "Overview", "body": ["Participants rated the new design more intuitive (Wilcoxon, 8.3 vs 7.2, p = 0.034). The preference result (20 vs 10, p = 0.099) was not significant, and the page says so."]}],
+    sections: [{"heading": "Overview", "body": ["Participants rated the new design more intuitive (Wilcoxon, 8.3 vs 7.2, p = 0.034). The preference result (20 vs 10, p = 0.099) was not significant."]}],
     highlights: [{"value": "30", "label": "participants"}, {"value": "p = 0.034", "label": "more intuitive"}],
   },
   {
@@ -239,7 +239,7 @@ export const projects: Project[] = [
     end: "2026-09",
     stack: ["Python", "FastAPI", "PostgreSQL", "Next.js", "Raspberry Pi", "Modbus TCP"],
     links: [],
-    featured: true,
+    featured: false,
     order: 40,
     gallery: [],
     sections: [{"heading": "What it is", "body": ["A live energy-flow map from grid, PV and battery through the building to the EV chargers, with dashboards for cost, CO2 and peak demand, plus spot-price invoicing."]}, {"heading": "What I did", "body": ["Built it from the ground up in 12 weeks with AI coding agents and led day-to-day development in a three-person team. I wrote a Raspberry Pi edge agent that reads four KEBA chargers and a KOSTAL inverter over Modbus TCP. I also built an \"Ask AI\" tool-calling agent that answers energy questions from the database. It is read-only and never stores chats."]}],

@@ -10,5 +10,6 @@ npm run build    # GitHub snapshot → typecheck → vite build → per-route HT
 
 - Content lives in typed data modules: `src/data/` (projects, career, site). Screenshots go in `src/assets/projects/<slug>/`.
 - A project at `src/data/projects.ts` with slug `x` is served at `/x`.
+- Share images: after changing a project cover, run `uv run --no-project --with pillow python scripts/og-images.py` to refresh `public/og/<slug>.jpg`.
 - The résumé is `public/KohQingJia_Resume.pdf`, linked as `/cv`.
 - Deploy: `./deploy/deploy.sh`. Agent coordination: `AGENTS.md`.

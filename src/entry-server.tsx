@@ -5,6 +5,7 @@ import { createStaticHandler, createStaticRouter, StaticRouterProvider } from 'r
 import { routes } from './routes';
 
 export { allProjects } from './lib/projects';
+export { site } from './data/site';
 
 const handler = createStaticHandler(routes);
 
