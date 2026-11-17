@@ -26,7 +26,17 @@ export default function Home() {
         data-hero
       >
         <div className="hero__copy">
-          <h1 id="hero-title">{site.name}</h1>
+          <h1 id="hero-title" aria-label={site.name}>
+            {site.name.split(' ').map((word, index) => (
+              <span key={word}>
+                {index > 0 && ' '}
+                <span className="hero__name-word">
+                  <span className="name-initial">{word[0]}</span>
+                  {word.slice(1)}
+                </span>
+              </span>
+            ))}
+          </h1>
           <RoleLine />
           <p className="hero__intro">{site.intro}</p>
           <p className="hero__context">

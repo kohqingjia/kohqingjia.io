@@ -1,10 +1,7 @@
-import { site } from '../data/site';
-
 const hand = [
   { rank: 'K', suit: 'spade', art: 'king' },
   { rank: 'Q', suit: 'heart', art: 'queen' },
   { rank: 'J', suit: 'club', art: 'jack' },
-  { rank: 'A', suit: 'spade', art: 'ace' },
 ] as const;
 
 function Suit({ name }: { name: (typeof hand)[number]['suit'] }) {
@@ -21,10 +18,13 @@ function Suit({ name }: { name: (typeof hand)[number]['suit'] }) {
   );
 }
 
-/** QJ's own mnemonic: K(oh), Q(ing), J(i)a, and Ji(a). */
+/** Three court cards for Koh Qing Jia's initials. */
 export default function NameDeck() {
   return (
-    <figure className="name-deck" aria-labelledby="deck-caption">
+    <figure
+      className="name-deck"
+      aria-label="K, Q and J playing cards for Koh Qing Jia"
+    >
       <div className="name-deck__hand" aria-hidden="true">
         {hand.map(({ rank, suit, art }) => (
           <div className={`playing-card playing-card--${art}`} key={rank}>
@@ -32,31 +32,21 @@ export default function NameDeck() {
               <span>{rank}</span>
               <Suit name={suit} />
             </span>
-            {art === 'ace' ? (
+            <div className="playing-card__court">
               <img
-                className="playing-card__ace"
-                src="/sprites/card-ace.svg"
-                width="128"
-                height="128"
+                src={`/sprites/card-${art}.svg`}
+                width="64"
+                height="64"
                 alt=""
               />
-            ) : (
-              <div className="playing-card__court">
-                <img
-                  src={`/sprites/card-${art}.svg`}
-                  width="64"
-                  height="64"
-                  alt=""
-                />
-                <span className="playing-card__rule" />
-                <img
-                  src={`/sprites/card-${art}.svg`}
-                  width="64"
-                  height="64"
-                  alt=""
-                />
-              </div>
-            )}
+              <span className="playing-card__rule" />
+              <img
+                src={`/sprites/card-${art}.svg`}
+                width="64"
+                height="64"
+                alt=""
+              />
+            </div>
             <span className="playing-card__index playing-card__index--bottom">
               <span>{rank}</span>
               <Suit name={suit} />
@@ -64,26 +54,6 @@ export default function NameDeck() {
           </div>
         ))}
       </div>
-      <figcaption id="deck-caption" className="name-deck__caption">
-        <span className="name-deck__name" aria-hidden="true">
-          {site.name.split(' ').map((word, index, words) => (
-            <span key={word}>
-              <b>{word[0]}</b>
-              {index === words.length - 1 ? (
-                <>
-                  {word.slice(1, -1)}
-                  <b>{word.at(-1)}</b>
-                </>
-              ) : (
-                word.slice(1)
-              )}
-            </span>
-          ))}
-        </span>
-        <span className="sr-only">
-          K, Q, J, A: {site.name}.
-        </span>
-      </figcaption>
     </figure>
   );
 }
