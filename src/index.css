@@ -2,10 +2,10 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 @font-face {
-  font-family: 'Space Grotesk';
-  src: url('/fonts/space-grotesk-latin-v5.3.0.woff2') format('woff2');
+  font-family: 'Urbanist';
+  src: url('/fonts/urbanist-latin-v5.3.0.woff2') format('woff2');
   font-style: normal;
-  font-weight: 300 700;
+  font-weight: 100 900;
   font-display: swap;
 }
 @font-face {
@@ -16,7 +16,7 @@
   font-display: swap;
 }
 @theme {
-  --font-sans: 'Space Grotesk', ui-sans-serif, system-ui, sans-serif;
+  --font-sans: 'Urbanist', ui-sans-serif, system-ui, sans-serif;
   --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
   --color-accent: #895310;
 }
@@ -64,7 +64,7 @@ body {
   margin: 0;
   background: var(--canvas);
   color: var(--ink);
-  font: 400 16px/1.65 var(--font-sans);
+  font: 450 16px/1.65 var(--font-sans);
   -webkit-font-smoothing: antialiased;
   font-variant-numeric: tabular-nums;
 }
@@ -103,22 +103,22 @@ ol {
 h1,
 h2,
 h3 {
-  font-weight: 500;
+  font-weight: 600;
   text-wrap: balance;
 }
 h1 {
-  letter-spacing: -0.06em;
+  letter-spacing: -0.025em;
   line-height: 1.04;
 }
 h2 {
   font-size: clamp(28px, 3.4vw, 40px);
   line-height: 1.2;
-  letter-spacing: -0.045em;
+  letter-spacing: -0.015em;
 }
 h3 {
   font-size: 21px;
   line-height: 1.3;
-  letter-spacing: -0.025em;
+  letter-spacing: -0.005em;
 }
 ::selection {
   background: var(--accent);
@@ -208,8 +208,8 @@ main:focus {
   gap: 4px;
   align-items: center;
   font-size: 23px;
-  font-weight: 500;
-  letter-spacing: -0.06em;
+  font-weight: 600;
+  letter-spacing: -0.02em;
 }
 .brand span {
   color: var(--ink-2);
@@ -309,7 +309,7 @@ main:focus {
   font-size: 24px;
   line-height: 1.3;
   margin-bottom: 8px;
-  letter-spacing: -0.03em;
+  letter-spacing: -0.01em;
 }
 .hero h1 {
   font-size: clamp(48px, 6.4vw, 84px);
@@ -1112,7 +1112,7 @@ main:focus {
 }
 .project__highlights dd {
   font-size: clamp(24px, 3vw, 40px);
-  letter-spacing: -0.04em;
+  letter-spacing: -0.015em;
   color: var(--ink-2);
   line-height: 1.2;
   margin: 0 0 8px;
