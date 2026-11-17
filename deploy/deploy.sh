@@ -1,17 +1,9 @@
 #!/usr/bin/env bash
-# Redeploy kohqingjia.io on qj-vps. Run from your laptop: ./deploy/deploy.sh
-# Pulls main on the VPS, rebuilds the container, then smoke-tests the live site.
+# Manual redeploy of kohqingjia.io on qj-vps. Run from your laptop: ./deploy/deploy.sh
+# (Merges to main also deploy themselves within ~5 minutes: see deploy/autodeploy.sh.)
 set -euo pipefail
 ssh qj-vps 'set -e
   cd ~/apps/kohqingjia.io
+  exec 9>/tmp/kohqingjia-deploy.lock; flock 9
   git fetch -q origin && git checkout -q main && git reset -q --hard origin/main
-  echo "deploying $(git log --oneline -1)"
-  docker compose -f deploy/compose.yaml up -d --build --quiet-pull 2>&1 | tail -2
-  sleep 2
-  fail=0
-  for p in /KohQingJia_Resume.pdf $(docker exec kohqingjia-site sh -c "grep -o \"<loc>[^<]*\" /srv/sitemap.xml" | sed "s|<loc>https://kohqingjia.io||"); do
-    code=$(curl -s -o /dev/null -w "%{http_code}" --max-time 15 "https://kohqingjia.io$p")
-    [ "$code" = 200 ] || { echo "FAIL $code $p"; fail=1; }
-  done
-  [ "$(curl -s -o /dev/null -w "%{http_code}" https://kohqingjia.io/definitely-not-a-page)" = 404 ] || { echo "FAIL 404 page"; fail=1; }
-  [ $fail = 0 ] && echo "all routes OK"; exit $fail'
+  ./deploy/vps-deploy.sh'
