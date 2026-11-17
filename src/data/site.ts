@@ -11,9 +11,10 @@ export const site = {
   location: 'Singapore',
   links: {
     github: 'https://github.com/kohqingjia',
-    linkedin: '', // TODO(QJ): paste LinkedIn URL
+    linkedin: 'https://www.linkedin.com/in/kohqingjia/',
     email: '', // TODO(QJ): which address may be public?
-    resume: '', // TODO(QJ): /resume.pdf once QJ approves a public copy
+    /** Stable short link; redirects to the PDF in /public (see astro.config.mjs). */
+    resume: '/cv',
   },
 } as const;
 

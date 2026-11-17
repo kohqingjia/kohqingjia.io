@@ -9,7 +9,7 @@ ssh qj-vps 'set -e
   docker compose -f deploy/compose.yaml up -d --build --quiet-pull 2>&1 | tail -2
   sleep 2
   fail=0
-  for p in / /projects /about $(cd src/content/projects && ls *.md | sed "s/\.md$//; s|^|/|"); do
+  for p in / /projects /about /KohQingJia_Resume.pdf $(cd src/content/projects && ls *.md | sed "s/\.md$//; s|^|/|"); do
     code=$(curl -s -o /dev/null -w "%{http_code}" --max-time 15 "https://kohqingjia.io$p")
     [ "$code" = 200 ] || { echo "FAIL $code $p"; fail=1; }
   done

@@ -10,6 +10,10 @@
 		Referrer-Policy strict-origin-when-cross-origin
 		Permissions-Policy "camera=(), microphone=(), geolocation=()"
 	}
+	# Stable résumé links (302 so the PDF filename can change later)
+	redir /cv /KohQingJia_Resume.pdf 302
+	redir /cv/ /KohQingJia_Resume.pdf 302
+	redir /resume /KohQingJia_Resume.pdf 302
 	try_files {path} {path}/index.html {path}.html
 	file_server
 	handle_errors {
