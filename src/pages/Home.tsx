@@ -192,14 +192,6 @@ export default function Home() {
         aria-labelledby="contact-title"
       >
         <div className="contact-card">
-          <img
-            className="contact-buddy"
-            src="/sprites/buddy.svg"
-            width="64"
-            height="64"
-            alt=""
-            loading="lazy"
-          />
           <h2 id="contact-title">Get in touch</h2>
           <p className="contact-intro">
             {site.openTo}. Based in {site.location}.
