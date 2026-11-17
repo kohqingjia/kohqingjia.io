@@ -10,6 +10,12 @@ end: 2026-04
 stack: [Python, scikit-learn, LDA, DistilBERT]
 featured: true
 order: 70
+cover:
+  src: ./media/bank-complaints/topic-heatmap.jpg
+  alt: "Heatmap mapping LDA topics to product categories"
+gallery:
+  - { src: ./media/bank-complaints/classification-results.jpg, alt: "Table of macro F1 scores for the text classifiers", caption: "Text classification: logistic regression led on macro F1" }
+  - { src: ./media/bank-complaints/risk-rating.jpg, alt: "Table comparing risk-rating models", caption: "Risk rating: logistic regression beat DistilBERT on 692 labelled cases" }
 sprite: bank-complaints.svg
 ---
 

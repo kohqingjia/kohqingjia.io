@@ -11,6 +11,11 @@ links:
   - { label: Research dashboard, href: "https://silentlink.187-52-125-31.sslip.io", kind: live }
 featured: true
 order: 1
+cover:
+  src: ./media/silentlink/dashboard.jpg
+  alt: "SilentLink research workspace overview"
+gallery:
+  - { src: ./media/silentlink/dashboard-scroll.jpg, alt: "SilentLink recording library and signal explorer", caption: "From observation to evidence: the recording library" }
 sprite: silentlink.svg
 ---
 

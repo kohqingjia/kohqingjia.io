@@ -12,6 +12,14 @@ links:
   - { label: treatsure.co, href: "https://treatsure.co", kind: live }
 featured: true
 order: 30
+cover:
+  src: ./media/treatsure/home.jpg
+  alt: "treatsure.co home page hero: treat food as treasure"
+gallery:
+  - { src: ./media/treatsure/home-scroll.jpg, alt: "Partner restaurants and impact figures on treatsure.co", caption: "Partners and impact, editable by the owner in the CMS" }
+  - { src: ./media/treatsure/home-scroll-2.jpg, alt: "Business verticals section on treatsure.co", caption: "Business verticals" }
+  - { src: ./media/treatsure/our-journey.png, alt: "Our journey timeline page on treatsure.co", caption: "Our journey timeline" }
+  - { src: ./media/treatsure/mobile.jpg, alt: "treatsure.co on a phone", caption: "Mobile" }
 sprite: treatsure.svg
 ---
 
