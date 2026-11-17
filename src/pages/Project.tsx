@@ -1,6 +1,6 @@
 import { Link, useParams } from 'react-router';
 import { site, statusLabel } from '../data/site';
-import { neighbours, period, projectBySlug } from '../lib/projects';
+import { neighbours, projectPeriod, projectBySlug } from '../lib/projects';
 import { useTitle } from '../lib/useTitle';
 import Sprite from '../components/Sprite';
 import Shot from '../components/Shot';
@@ -21,7 +21,6 @@ export default function ProjectPage() {
         <Link to="/projects">
           <span aria-hidden="true">← </span>All projects
         </Link>
-        <span>kohqingjia.io/{p.slug}</span>
       </p>
       <header className="project__head">
         <div className="project__art">
@@ -33,11 +32,7 @@ export default function ProjectPage() {
               {statusLabel[p.status]}
             </span>
             <span>
-              {period(
-                p.start,
-                p.end,
-                p.status === 'building' ? 'Now' : undefined,
-              )}
+              {projectPeriod(p)}
             </span>
             {p.team && <span>Team of {p.team}</span>}
           </p>
@@ -97,7 +92,7 @@ export default function ProjectPage() {
       </div>
       {p.gallery.length > 0 && (
         <section className="project__gallery" aria-labelledby="screens-title">
-          <h2 id="screens-title">A closer look</h2>
+          <h2 id="screens-title">Screenshots</h2>
           <ul className="gallery">
             {p.gallery.map((g) => (
               <li key={g.src}>

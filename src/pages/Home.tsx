@@ -26,11 +26,6 @@ export default function Home() {
         data-hero
       >
         <div className="hero__copy">
-          <p className="hero__hello eyebrow">
-            <span className="hero__hello-mark" aria-hidden="true" /> A little
-            corner of the internet
-          </p>
-          <p className="hero__greeting">Hey, I'm</p>
           <h1 id="hero-title">{site.name}</h1>
           <RoleLine />
           <p className="hero__intro">{site.intro}</p>
@@ -51,10 +46,6 @@ export default function Home() {
           </p>
         </div>
         <NameDeck />
-        <a className="hero__scroll" href="#about">
-          <span className="eyebrow">A little about me</span>
-          <span aria-hidden="true">↓</span>
-        </a>
       </section>
       <section
         id="about"
@@ -62,8 +53,7 @@ export default function Home() {
         aria-labelledby="about-title"
       >
         <header className="section-heading">
-          <p className="eyebrow">01 / The person behind the projects</p>
-          <h2 id="about-title">Curious about how things work</h2>
+          <h2 id="about-title">About</h2>
         </header>
         <div className="about-grid">
           <div className="portrait-card">
@@ -105,7 +95,6 @@ export default function Home() {
         aria-labelledby="exp-title"
       >
         <header className="section-heading">
-          <p className="eyebrow">02 / Along the way</p>
           <h2 id="exp-title">Experience and education</h2>
         </header>
         <Career experience={experience} education={education} />
@@ -118,8 +107,7 @@ export default function Home() {
       >
         <header className="section-heading section-heading--split">
           <div>
-            <p className="eyebrow">03 / Ideas put into practice</p>
-            <h2 id="projects-title">Selected projects</h2>
+            <h2 id="projects-title">Projects</h2>
           </div>
           <Link to="/projects" className="text-link">
             Every project<span aria-hidden="true">↗</span>
@@ -139,7 +127,6 @@ export default function Home() {
         aria-labelledby="skills-title"
       >
         <header className="section-heading">
-          <p className="eyebrow">04 / The toolkit</p>
           <h2 id="skills-title">Skills and tools</h2>
         </header>
         <div className="skills-grid">
@@ -164,7 +151,6 @@ export default function Home() {
         aria-labelledby="awards-title"
       >
         <header className="section-heading">
-          <p className="eyebrow">05 / A few milestones</p>
           <h2 id="awards-title">Hackathons and awards</h2>
         </header>
         <ul className="awards-grid">
@@ -214,7 +200,6 @@ export default function Home() {
             alt=""
             loading="lazy"
           />
-          <p className="eyebrow">06 / What's next</p>
           <h2 id="contact-title">Get in touch</h2>
           <p className="contact-intro">
             {site.openTo}. Based in {site.location}.
@@ -229,21 +214,18 @@ export default function Home() {
             </li>
             <li>
               <a href={site.links.linkedin} rel="me">
-                <span className="eyebrow">Connect</span>
                 <span>LinkedIn</span>
                 <span aria-hidden="true">↗</span>
               </a>
             </li>
             <li>
               <a href={site.links.github} rel="me">
-                <span className="eyebrow">Explore</span>
                 <span>GitHub</span>
                 <span aria-hidden="true">↗</span>
               </a>
             </li>
             <li>
               <a href={site.links.resume}>
-                <span className="eyebrow">Read</span>
                 <span>Résumé (PDF)</span>
                 <span aria-hidden="true">↗</span>
               </a>

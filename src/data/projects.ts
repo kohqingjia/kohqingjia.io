@@ -267,7 +267,7 @@ export const projects: Project[] = [
   {
     slug: "silentlink",
     title: "SilentLink",
-    tagline: "A local-first research platform that records AirPods head motion to study silent articulation. It makes no transcription claims.",
+    tagline: "A local-first research platform that records AirPods head motion to study silent articulation.",
     status: "building",
     kind: "research",
     role: "Solo developer",

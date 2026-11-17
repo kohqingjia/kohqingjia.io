@@ -2,7 +2,7 @@ import type { CSSProperties } from 'react';
 import { Link } from 'react-router';
 import type { Project } from '../data/types';
 import { statusLabel } from '../data/site';
-import { period } from '../lib/projects';
+import { projectPeriod } from '../lib/projects';
 import Sprite from './Sprite';
 export default function ProjectCard({
   project: p,
@@ -53,11 +53,7 @@ export default function ProjectCard({
             {statusLabel[p.status]}
           </span>
           <span>
-            {period(
-              p.start,
-              p.end,
-              p.status === 'building' ? 'Now' : undefined,
-            )}
+            {projectPeriod(p)}
           </span>
         </p>
         <h3>
