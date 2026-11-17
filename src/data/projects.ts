@@ -26,6 +26,12 @@ import silentlink_dashboard from '../assets/projects/silentlink/dashboard.webp';
 import silentlink_dashboard_scroll from '../assets/projects/silentlink/dashboard-scroll.webp';
 import stardyhub_dashboard from '../assets/projects/stardyhub/dashboard.webp';
 import stardyhub_modules from '../assets/projects/stardyhub/modules.webp';
+import knotty_prototype from '../assets/projects/knotty/prototype.webp';
+import knotty_versions from '../assets/projects/knotty/versions.webp';
+import knotty_intuitiveness from '../assets/projects/knotty/intuitiveness.webp';
+import knotty_ai_pattern_maker from '../assets/projects/knotty/ai-pattern-maker.webp';
+import hdb_influence from '../assets/projects/hdb-prices/influence-diagram.webp';
+import hdb_black_box from '../assets/projects/hdb-prices/black-box.webp';
 import treatsure_home from '../assets/projects/treatsure/home.webp';
 import treatsure_home_scroll from '../assets/projects/treatsure/home-scroll.webp';
 import treatsure_home_scroll_2 from '../assets/projects/treatsure/home-scroll-2.webp';
@@ -61,14 +67,14 @@ export const projects: Project[] = [
     kind: "hackathon",
     role: "Team member",
     org: "SP Group Hackomania",
-    start: "2026-02",
-    end: "2026-02",
-    stack: ["TypeScript"],
+    start: "2026-03",
+    end: "2026-03",
+    stack: ["Next.js", "TypeScript", "FastAPI", "ClickHouse", "OpenAI", "OneMap API"],
     links: [{"label": "Source on GitHub", "href": "https://github.com/kohqingjia/hackermen-hackomania2026", "kind": "repo"}],
     featured: false,
     order: 60,
     gallery: [],
-    sections: [{"heading": "Overview", "body": ["Turns a passive utilities dashboard into a behaviour-change app: it explains usage patterns, recommends specific changes and adds block-against-block competition."]}],
+    sections: [{"heading": "Overview", "body": ["Turns a passive utilities dashboard into a behaviour-change app: it explains usage patterns, recommends specific changes and adds block-against-block competition."]}, {"heading": "How it works", "body": ["Residents earn GreenUP points for shifting usage to off-peak hours. The app has a half-hourly usage dashboard, block comparisons, a map, a weekly leaderboard, challenges with photo proof and an AI coach."]}, {"heading": "What I did", "body": ["I set up the project, built the AI Coach chat widget and the OneMap block map, and wrote the README."]}],
     highlights: [],
   },
   {
@@ -128,7 +134,8 @@ export const projects: Project[] = [
     status: "shipped",
     kind: "personal",
     role: "Solo developer",
-    start: "2026-05",
+    start: "2026-02",
+    end: "2026-02",
     stack: ["Next.js", "TypeScript", "Supabase"],
     links: [{"label": "Live app", "href": "https://flash-byte.vercel.app", "kind": "live"}],
     featured: false,
@@ -143,14 +150,16 @@ export const projects: Project[] = [
     tagline: "An English–Chinese vocabulary app with context-aware translation and FSRS spaced-repetition flashcards.",
     status: "shipped",
     kind: "personal",
-    role: "Solo developer",
-    start: "2026-06",
+    role: "Co-developer",
+    start: "2026-02",
+    end: "2026-02",
+    team: 2,
     stack: ["Flutter", "Dart", "Supabase", "OpenAI"],
     links: [{"label": "Source on GitHub", "href": "https://github.com/kohqingjia/Hanly", "kind": "repo"}],
     featured: false,
     order: 90,
     gallery: [],
-    sections: [],
+    sections: [{"heading": "What it does", "body": ["Translates in context, tailored to your level and interests with GPT-4o-mini, schedules reviews with FSRS-4.5 spaced repetition and shows pinyin above the characters. A six-step onboarding sets up your profile."]}, {"heading": "What I did", "body": ["I set up the Flutter app and built the login and sign-up screens. My teammate built onboarding, translation, flashcards and the dictionary."]}],
     highlights: [],
   },
   {
@@ -163,12 +172,13 @@ export const projects: Project[] = [
     org: "SMU COR1305",
     start: "2025-08",
     end: "2025-12",
-    stack: ["R"],
+    stack: ["Excel"],
     links: [],
     featured: false,
     order: 120,
-    gallery: [],
-    sections: [{"heading": "Overview", "body": ["Out-of-sample R² of about 0.75."]}],
+    cover: { src: hdb_influence, alt: "Influence diagram: flat size, remaining lease and distances to MRT, school, mall and CBD feed a desirability index that predicts resale price", width: 1600, height: 1000 },
+    gallery: [{ src: hdb_black_box, alt: "Black-box model diagram of the decisions, parameters and performance measures", width: 1600, height: 900, caption: "The model's decisions, parameters and measures" }],
+    sections: [{"heading": "Approach", "body": ["We built an HDB Desirability Index: a weighted sum of standardised scores for a flat's floor area, remaining lease and distances to the nearest MRT station, primary school, shopping mall and the CBD. Distances come from coordinates using the Haversine formula."]}, {"heading": "Result", "body": ["A linear-regression model on more than 200,000 resale transactions, with an out-of-sample R² of about 0.75, behind a decision tool for first-time buyers. The tool also checks HDB loan eligibility, tests affordability and compares buying with renting."]}],
     highlights: [{"value": "200K+", "label": "transactions"}, {"value": "0.75", "label": "out-of-sample R²"}],
   },
   {
@@ -185,8 +195,11 @@ export const projects: Project[] = [
     links: [],
     featured: false,
     order: 130,
-    gallery: [],
-    sections: [{"heading": "Overview", "body": ["Participants rated the new design more intuitive (Wilcoxon, 8.3 vs 7.2, p = 0.034). The preference result (20 vs 10, p = 0.099) was not significant."]}],
+    cover: { src: knotty_prototype, alt: "Five Knotty prototype screens: proficiency setup, home feed, pattern chat, yarn trading and a confirmed trade", width: 1600, height: 1000 },
+    gallery: [{ src: knotty_versions, alt: "The two yarn-trade layouts tested, Version A and Version B", width: 1600, height: 900, caption: "The two yarn-trade layouts we tested" },
+      { src: knotty_intuitiveness, alt: "Results table: mean intuitiveness 8.3 for Version A and 7.2 for Version B, p = 0.034", width: 1600, height: 900, caption: "Version A rated more intuitive (Wilcoxon signed-rank, p = 0.034)" },
+      { src: knotty_ai_pattern_maker, alt: "AI Pattern Maker screens: create a pattern, chat with the AI, edit rounds, pattern library", width: 1600, height: 900, caption: "AI Pattern Maker, one of three changes from our heuristic evaluation" }],
+    sections: [{"heading": "The problem", "body": ["Crocheters juggle confusing written patterns, a scattered support community and no way to manage their yarn. Knotty turns written patterns into visual guides, adds a community and lets people trade yarn."]}, {"heading": "What we did", "body": ["A heuristic evaluation led to three prototype changes: the yarn listing flow, saving projects and the AI Pattern Maker. We then tested two layouts of the yarn-trade screen with 30 participants on Maze, within-subjects and counterbalanced (15 saw Version A first, 15 saw Version B first)."]}, {"heading": "Result", "body": ["Participants rated Version A, the top-down layout, more intuitive (Wilcoxon, 8.3 vs 7.2, p = 0.034). 20 of 30 preferred it, which was not significant (p = 0.099). We kept Version A."]}],
     highlights: [{"value": "30", "label": "participants"}, {"value": "p = 0.034", "label": "more intuitive"}],
   },
   {
@@ -197,8 +210,8 @@ export const projects: Project[] = [
     kind: "hackathon",
     role: "Team member",
     org: "Hack For Cities 2026 · Finalist, Most Innovative",
-    start: "2026-03",
-    end: "2026-03",
+    start: "2026-01",
+    end: "2026-02",
     team: 6,
     stack: ["Python", "LLM agents"],
     links: [{"label": "Source on GitHub", "href": "https://github.com/ylsiew2024-byte/HFC", "kind": "repo"}],
