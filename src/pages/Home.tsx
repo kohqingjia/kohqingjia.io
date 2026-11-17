@@ -14,7 +14,7 @@ import Career from '../components/Career';
 import RoleLine from '../components/RoleLine';
 import SkillIcon from '../components/SkillIcon';
 import Sprite from '../components/Sprite';
-import Workshop from '../components/Workshop';
+import NameDeck from '../components/NameDeck';
 import { useTitle } from '../lib/useTitle';
 export default function Home() {
   useTitle(site.name);
@@ -50,7 +50,7 @@ export default function Home() {
             </a>
           </p>
         </div>
-        <Workshop />
+        <NameDeck />
         <a className="hero__scroll" href="#about">
           <span className="eyebrow">A little about me</span>
           <span aria-hidden="true">↓</span>

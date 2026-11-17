@@ -211,9 +211,31 @@ main:focus {
   font-weight: 600;
   letter-spacing: -0.02em;
 }
-.brand span {
-  color: var(--ink-2);
-  font-size: 16px;
+.deck-mark {
+  display: flex;
+  padding-block: 4px;
+}
+.deck-mark > span {
+  display: grid;
+  place-items: center;
+  width: 24px;
+  height: 32px;
+  margin-left: -3px;
+  border: 1px solid var(--ink-3);
+  border-radius: 3px;
+  background: var(--surface);
+  color: var(--ink);
+  font: 500 15px/1 var(--font-sans);
+  transform: rotate(-9deg);
+}
+.deck-mark > span:nth-child(2) {
+  transform: translateY(-2px) rotate(-3deg);
+}
+.deck-mark > span:nth-child(3) {
+  transform: translateY(-2px) rotate(3deg);
+}
+.deck-mark > span:nth-child(4) {
+  transform: rotate(9deg);
 }
 .desktop-nav {
   display: flex;
@@ -364,64 +386,185 @@ main:focus {
   border-bottom: 1px solid var(--line);
   padding-bottom: 16px;
 }
-.workshop {
-  background: var(--scene);
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
-  padding: 20px;
+/* A personal deck: paper stays warm in the workshop's day and night modes. */
+.name-deck {
+  container-type: inline-size;
+  width: 100%;
+  max-width: 600px;
+  justify-self: center;
   align-self: center;
-  position: relative;
+  padding-block: 20px;
 }
-.workshop::before,
-.workshop::after {
-  content: '';
-  position: absolute;
-  width: 8px;
-  height: 8px;
-  background: var(--ink-3);
-  border: 2px solid var(--scene);
-}
-.workshop::before {
-  top: -4px;
-  left: 28px;
-}
-.workshop::after {
-  right: 28px;
-  bottom: -4px;
-}
-.workshop__label {
+.name-deck__heading {
   display: flex;
+  align-items: center;
   justify-content: space-between;
-  gap: 8px;
-}
-.workshop__label .eyebrow {
+  gap: 16px;
+  margin-inline: 20px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--line);
   font-size: 9px;
 }
-.workshop__time {
-  color: var(--ink-2);
+.name-deck__hand {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 340px;
+  padding: 36px 16px 24px;
+  isolation: isolate;
 }
-.workshop img {
-  width: 100%;
+.playing-card {
+  --angle: -16deg;
+  --lift: 20px;
+  position: relative;
+  flex: none;
+  width: clamp(104px, 27cqi, 148px);
+  aspect-ratio: 2 / 3;
+  display: grid;
+  place-items: center;
+  border: 1px solid #27364d;
+  border-radius: 8px;
+  background: #fff8e8;
+  color: #27364d;
+  box-shadow: 3px 4px 0 #27364d;
+  transform: translateY(var(--lift)) rotate(var(--angle));
+}
+.playing-card + .playing-card {
+  margin-left: calc(-1 * clamp(24px, 72px - 8cqi, 48px));
+}
+.playing-card--queen {
+  --angle: -5deg;
+  --lift: -4px;
+  color: #8d453c;
+}
+.playing-card--jack {
+  --angle: 6deg;
+  --lift: -4px;
+}
+.playing-card--ace {
+  --angle: 17deg;
+  --lift: 20px;
+}
+.playing-card::before {
+  content: '';
+  position: absolute;
+  inset: 8px;
+  border: 1px solid #d6c9b0;
+  border-radius: 3px;
+  pointer-events: none;
+}
+.playing-card__index {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 1;
+  display: grid;
+  justify-items: center;
+  gap: 4px;
+  padding: 4px;
+  background: #fff8e8;
+  font: 600 28px/1 var(--font-sans);
+}
+.playing-card__index svg {
+  width: 12px;
+  height: 12px;
+}
+.playing-card__index--bottom {
+  inset: auto 10px 10px auto;
+  transform: rotate(180deg);
+}
+.playing-card__court {
+  display: grid;
+  justify-items: center;
+  gap: 4px;
+}
+.playing-card__court img {
+  width: 64px;
+  height: 64px;
   image-rendering: pixelated;
 }
-.workshop figcaption {
+.playing-card__court img:last-child {
+  transform: rotate(180deg);
+}
+.playing-card__rule {
+  width: 56px;
+  height: 1px;
+  background: #d6ae61;
+  transform: rotate(-16deg);
+}
+.playing-card__ace {
+  width: 128px;
+  height: 128px;
+  image-rendering: pixelated;
+}
+.name-deck__caption {
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px 16px;
+  margin: 16px 20px 0;
+  padding-top: 20px;
+  border-top: 1px solid var(--line);
+}
+.name-deck__name {
+  display: flex;
   gap: 8px;
-  padding-top: 12px;
-  border-top: 1px dashed var(--line);
+  color: var(--ink-2);
+  font-size: 22px;
+  letter-spacing: -0.02em;
 }
-.workshop figcaption span {
-  font: 400 9px/1.6 var(--font-mono);
-  color: var(--ink-3);
+.name-deck__name b {
+  color: var(--ink);
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-color: var(--ink-3);
+  text-underline-offset: 6px;
 }
-.night-label,
-.dark .day-label {
-  display: none;
+.name-deck__name > span:last-child b:last-child {
+  text-transform: uppercase;
 }
-.dark .night-label {
-  display: inline;
+.name-deck__caption .eyebrow {
+  font-size: 9px;
+}
+@container (max-width: 540px) {
+  .playing-card__ace {
+    width: 64px;
+    height: 64px;
+  }
+}
+@container (max-width: 440px) {
+  .name-deck__hand {
+    min-height: 260px;
+  }
+  .playing-card__court {
+    transform: translateX(-16px);
+  }
+  .playing-card__court img:last-child,
+  .playing-card__rule {
+    display: none;
+  }
+  .playing-card__index {
+    font-size: 22px;
+    top: 6px;
+    left: 6px;
+    gap: 2px;
+  }
+  .playing-card__index--bottom {
+    inset: auto 6px 6px auto;
+  }
+  .playing-card__index svg {
+    width: 8px;
+    height: 8px;
+  }
+  .name-deck__caption {
+    justify-content: center;
+  }
+  .name-deck__heading {
+    margin-inline: 12px;
+    font-size: 8px;
+    gap: 8px;
+  }
 }
 .home-section {
   padding-top: 64px;
@@ -1312,13 +1455,6 @@ main:focus {
     padding: 12px 14px;
     gap: 12px;
   }
-  .workshop {
-    padding: 16px;
-  }
-  .workshop__time,
-  .workshop figcaption > span:last-child {
-    display: none;
-  }
   .about-grid {
     grid-template-columns: 208px 1fr;
     gap: 32px;
@@ -1435,14 +1571,9 @@ main:focus {
   .hero__actions .eyebrow {
     font-size: 9px;
   }
-  .workshop {
-    width: 100%;
+  .name-deck {
     max-width: 520px;
-    justify-self: center;
-  }
-  .workshop__time,
-  .workshop figcaption > span:last-child {
-    display: inline;
+    padding-block: 0;
   }
   .hero__scroll {
     padding-top: 0;
@@ -1715,7 +1846,7 @@ main:focus {
   .hero__copy {
     animation: hero-enter 400ms var(--ease-out) both;
   }
-  .workshop {
+  .name-deck {
     animation: hero-enter 400ms 60ms var(--ease-out) both;
   }
   .status[data-status='building']::before {
@@ -1740,6 +1871,13 @@ main:focus {
     }
   }
   @media (hover: hover) and (pointer: fine) {
+    .playing-card {
+      transition: transform 150ms var(--ease-out);
+    }
+    .playing-card:hover {
+      z-index: 2;
+      transform: translateY(calc(var(--lift) - 16px)) rotate(var(--angle));
+    }
     .contact-buddy {
       transition: transform 150ms steps(3, end);
     }

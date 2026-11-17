@@ -5,6 +5,7 @@ import type { MouseEvent } from 'react';
 import { site } from '../data/site';
 import PixelIcon, { type PixelIconName } from './PixelIcon';
 import ThemeToggle from './ThemeToggle';
+import { DeckMark } from './NameDeck';
 const nav = [
   { to: '/#about', label: 'About', icon: 'about' },
   { to: '/#experience', label: 'Journey', icon: 'experience' },
@@ -53,8 +54,7 @@ export default function Layout() {
           to="/"
           aria-label={`${site.short} — ${site.name}, home`}
         >
-          {site.short}
-          <span aria-hidden="true">/</span>
+          <DeckMark />
         </Link>
         <nav className="desktop-nav" aria-label="Main">
           {links}
