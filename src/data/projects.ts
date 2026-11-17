@@ -24,6 +24,8 @@ import sharebite_home from '../assets/projects/sharebite/home.webp';
 import sharebite_features from '../assets/projects/sharebite/features.webp';
 import silentlink_dashboard from '../assets/projects/silentlink/dashboard.webp';
 import silentlink_dashboard_scroll from '../assets/projects/silentlink/dashboard-scroll.webp';
+import stardyhub_dashboard from '../assets/projects/stardyhub/dashboard.webp';
+import stardyhub_modules from '../assets/projects/stardyhub/modules.webp';
 import treatsure_home from '../assets/projects/treatsure/home.webp';
 import treatsure_home_scroll from '../assets/projects/treatsure/home-scroll.webp';
 import treatsure_home_scroll_2 from '../assets/projects/treatsure/home-scroll-2.webp';
@@ -293,7 +295,8 @@ export const projects: Project[] = [
     links: [{"label": "Live app (sign-in)", "href": "https://stardyhub.kohqingjia.io", "kind": "live"}],
     featured: true,
     order: 3,
-    gallery: [],
+    cover: { src: stardyhub_dashboard, alt: "StardyHub dashboard: a task board tagged by module, with links and reminders below", width: 1600, height: 1000 },
+    gallery: [{ src: stardyhub_modules, alt: "StardyHub modules page with one card per course", width: 1600, height: 1000, caption: "Modules: one space per course for materials, notes and practice" }],
     sections: [{"heading": "Why", "body": ["I wanted one place where every course's slides become something I can revise from."]}],
     highlights: [],
   },
