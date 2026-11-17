@@ -1,0 +1,31 @@
+---
+import Sprite from '../Sprite.astro';
+---
+<div class="route-atlas" aria-hidden="true">
+  <div class="route-atlas__label"><span>Route QJ</span><span>Start here</span></div>
+  <svg class="route-atlas__map" viewBox="0 0 288 224" fill="none">
+    <path class="route-atlas__quiet" d="M32 48H96L160 112H256M160 112V192H256" />
+    <path class="route-atlas__route" d="M32 48H96L160 112H256" />
+    <path class="route-atlas__branch" d="M160 112V192H256" />
+    <path class="route-atlas__end" d="M256 104V120M256 184V200" />
+  </svg>
+  <div class="route-atlas__traveller"><Sprite file="qj.svg" slug="qj-hero" /></div>
+  <span class="route-atlas__note">Ideas</span>
+  <span class="route-atlas__note route-atlas__note--end">Useful things</span>
+  <span class="route-atlas__note route-atlas__note--branch">Work in progress</span>
+  <p class="route-atlas__caption">One address. Many stops</p>
+</div>
+<style>
+  .route-atlas { width: 288px; position: relative; color: var(--text-3); }
+  .route-atlas__label { display: flex; justify-content: space-between; font: 11px var(--font-mono); padding-bottom: 16px; border-bottom: 1px solid var(--line); }
+  .route-atlas__map { width: 288px; height: 224px; }
+  .route-atlas__map path { stroke-width: 4; stroke-linejoin: round; }
+  .route-atlas__quiet { stroke: var(--line); }
+  .route-atlas__route, .route-atlas__branch, .route-atlas__end { stroke: var(--accent); }
+  .route-atlas__branch { stroke-dasharray: 4 4; }
+  .route-atlas__traveller { position: absolute; top: 16px; left: 0; }
+  .route-atlas__note { position: absolute; top: 96px; left: 16px; font: 10px var(--font-mono); }
+  .route-atlas__note--end { top: 112px; left: auto; right: 16px; }
+  .route-atlas__note--branch { top: 192px; left: auto; right: 16px; }
+  .route-atlas__caption { font: 11px var(--font-mono); border-top: 1px solid var(--line); padding-top: 16px; }
+</style>
