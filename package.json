@@ -1,20 +1,31 @@
 {
   "name": "kohqingjia.io",
+  "private": true,
+  "version": "1.0.0",
   "type": "module",
-  "version": "0.0.1",
-  "engines": {
-    "node": ">=22.12.0"
-  },
   "scripts": {
-    "dev": "astro dev",
-    "build": "astro build",
-    "preview": "astro preview",
-    "astro": "astro",
-    "check": "astro check"
+    "dev": "vite",
+    "build": "node scripts/github-activity.mjs && tsc -b && vite build && node scripts/prerender.mjs",
+    "preview": "vite preview",
+    "typecheck": "tsc -b"
   },
   "dependencies": {
-    "@fontsource-variable/space-grotesk": "^5.3.0",
-    "@fontsource/ibm-plex-mono": "^5.3.0",
-    "astro": "6.4.8"
+    "motion": "^14.14.0",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "react-router": "^7.18.5"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.3.5",
+    "@types/node": "^24.19.2",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@vitejs/plugin-react": "^6.1.2",
+    "tailwindcss": "^4.3.5",
+    "typescript": "~7.0.2",
+    "vite": "^8.3.6"
+  },
+  "engines": {
+    "node": ">=22.12.0"
   }
 }

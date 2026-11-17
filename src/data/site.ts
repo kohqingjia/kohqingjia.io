@@ -1,20 +1,35 @@
-// OWNER: Claude. Site-wide facts. Fields marked TODO(QJ) are left empty on purpose
-// until QJ confirms them — empty values are simply not rendered.
+// OWNER: Claude. Site-wide facts (from QJ's Nov 2026 résumé). Empty values are not rendered.
 export const site = {
   name: 'Koh Qing Jia',
   short: 'QJ',
-  domain: 'kohqingjia.io',
   url: 'https://kohqingjia.io',
-  role: 'Information Systems student at SMU',
+  headline: 'Information Systems student at SMU',
+  /** Rotating role line for the hero (QJ's target roles). */
+  roles: ['AI engineer', 'product builder', 'data analyst'],
   intro:
     'I build AI agents, data products and the software around them, and I ship them to real users.',
+  about: [
+    "I'm an Information Systems student at Singapore Management University. I like building things people actually use, and lately that means AI agents with guardrails around them.",
+    'I relaunched treatsure.co in 9 weeks as the human lead of a Claude Code agent workflow. At Promyro I built an energy management system from the ground up in 12 weeks. At SMU I lead the development of ClassPart AI, a multi-agent assessment system.',
+  ],
+  facts: [
+    { label: 'Studying', value: 'BSc Information Systems, SMU' },
+    { label: 'Focus', value: 'Agentic AI · Full stack · Data' },
+    { label: 'Languages', value: 'English · Mandarin Chinese' },
+    { label: 'Open to', value: 'Product, data and AI engineering roles' },
+  ],
   location: 'Singapore',
+  openTo: 'Open to product, data and AI engineering roles',
+  /** TODO(QJ): add a portrait at public/me.jpg and set this to '/me.jpg'. */
+  photo: '',
   links: {
     github: 'https://github.com/kohqingjia',
+    githubHandle: 'kohqingjia',
     linkedin: 'https://www.linkedin.com/in/kohqingjia/',
-    email: '', // TODO(QJ): which address may be public?
-    /** Stable short link; redirects to the PDF in /public (see astro.config.mjs). */
+    email: 'qingjia.koh.2024@computing.smu.edu.sg',
+    /** Stable short link; Caddy redirects /cv to the PDF in /public. */
     resume: '/cv',
+    resumeFile: '/KohQingJia_Resume.pdf',
   },
 } as const;
 

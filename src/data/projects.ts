@@ -1,37 +1,307 @@
-// OWNER: Claude. Query helpers so pages never sort/filter by hand.
-import { getCollection, type CollectionEntry } from 'astro:content';
+// OWNER: Claude. Generated once from the old Markdown files, now hand-edited.
+// Facts follow QJ's résumé honesty rules: never invent numbers or dates.
+import type { Project } from './types';
+import bank_complaints_topic_heatmap from '../assets/projects/bank-complaints/topic-heatmap.webp';
+import bank_complaints_classification_results from '../assets/projects/bank-complaints/classification-results.webp';
+import bank_complaints_risk_rating from '../assets/projects/bank-complaints/risk-rating.webp';
+import classpartai_home from '../assets/projects/classpartai/home.webp';
+import classpartai_how_it_works from '../assets/projects/classpartai/how-it-works.webp';
+import classpartai_agent_workspace from '../assets/projects/classpartai/agent-workspace.webp';
+import classpartai_evidence from '../assets/projects/classpartai/evidence.webp';
+import connectsphere_c4_container from '../assets/projects/connectsphere/c4-container.webp';
+import connectsphere_c4_context from '../assets/projects/connectsphere/c4-context.webp';
+import metromind_dashboard from '../assets/projects/metromind/dashboard.webp';
+import metromind_agent_pipeline from '../assets/projects/metromind/agent-pipeline.webp';
+import metromind_forecasting from '../assets/projects/metromind/forecasting.webp';
+import picadilly_title from '../assets/projects/picadilly/title.webp';
+import sharebite_home from '../assets/projects/sharebite/home.webp';
+import sharebite_features from '../assets/projects/sharebite/features.webp';
+import silentlink_dashboard from '../assets/projects/silentlink/dashboard.webp';
+import silentlink_dashboard_scroll from '../assets/projects/silentlink/dashboard-scroll.webp';
+import treatsure_home from '../assets/projects/treatsure/home.webp';
+import treatsure_home_scroll from '../assets/projects/treatsure/home-scroll.webp';
+import treatsure_home_scroll_2 from '../assets/projects/treatsure/home-scroll-2.webp';
+import treatsure_our_journey from '../assets/projects/treatsure/our-journey.webp';
+import treatsure_mobile from '../assets/projects/treatsure/mobile.webp';
 
-export type Project = CollectionEntry<'projects'>;
-
-const byOrder = (a: Project, b: Project) =>
-  a.data.order - b.data.order || b.data.start.localeCompare(a.data.start);
-
-export async function allProjects() {
-  return (await getCollection('projects')).sort(byOrder);
-}
-
-export async function featuredProjects() {
-  return (await allProjects()).filter((p) => p.data.featured);
-}
-
-export async function projectsByStatus() {
-  const all = await allProjects();
-  return {
-    building: all.filter((p) => p.data.status === 'building'),
-    shipped: all.filter((p) => p.data.status === 'shipped'),
-    archived: all.filter((p) => p.data.status === 'archived'),
-  };
-}
-
-const fmt = new Intl.DateTimeFormat('en-GB', { month: 'short', year: 'numeric' });
-const toDate = (ym: string) => new Date(`${ym}-01T00:00:00Z`);
-
-/** "Aug 2026 – Oct 2026", or "Aug 2026 – now" while building. */
-export function period(p: Project) {
-  const start = fmt.format(toDate(p.data.start));
-  if (p.data.end) return `${start} – ${fmt.format(toDate(p.data.end))}`;
-  return p.data.status === 'building' ? `${start} – now` : start;
-}
-
-/** Top-level routes a project slug must never take. */
-export const RESERVED_SLUGS = new Set(['projects', 'about', '404', 'sprites', 'resume', 'cv']);
+export const projects: Project[] = [
+  {
+    slug: "bank-complaints",
+    title: "Bank complaint text mining",
+    tagline: "Topic modelling and classifiers over 144,000 consumer bank complaints, plus a risk rating built from 692 hand-labelled cases.",
+    status: "shipped",
+    kind: "course",
+    role: "Team member",
+    org: "SMU IS450 Text Mining",
+    start: "2026-01",
+    end: "2026-04",
+    stack: ["Python", "scikit-learn", "LDA", "DistilBERT"],
+    links: [],
+    featured: true,
+    order: 70,
+    cover: { src: bank_complaints_topic_heatmap, alt: "Heatmap mapping LDA topics to product categories", width: 1600, height: 900 },
+    gallery: [{ src: bank_complaints_classification_results, alt: "Table of macro F1 scores for the text classifiers", width: 1600, height: 900, caption: "Text classification: logistic regression led on macro F1" },
+      { src: bank_complaints_risk_rating, alt: "Table comparing risk-rating models", width: 1600, height: 900, caption: "Risk rating: logistic regression beat DistilBERT on 692 labelled cases" }],
+    sections: [{"heading": "Result\nTF-IDF classifiers reached a macro F1 of 0.85. On the small hand-labelled set, logistic regression (macro F1 0.80) beat DistilBERT. That is a small-data lesson I keep coming back to.", "body": []}],
+    highlights: [{"value": "144K", "label": "complaints mined"}, {"value": "0.85", "label": "macro F1"}],
+  },
+  {
+    slug: "blockbattles",
+    title: "BlockBattles",
+    tagline: "A community energy challenge that pits HDB blocks against each other to save electricity each week.",
+    status: "shipped",
+    kind: "hackathon",
+    role: "Team member",
+    org: "SP Group Hackomania",
+    start: "2026-02",
+    end: "2026-02",
+    stack: ["TypeScript"],
+    links: [{"label": "Source on GitHub", "href": "https://github.com/kohqingjia/hackermen-hackomania2026", "kind": "repo"}],
+    featured: false,
+    order: 60,
+    gallery: [],
+    sections: [{"heading": "Overview", "body": ["Turns a passive utilities dashboard into a behaviour-change app: it explains usage patterns, recommends specific changes and adds block-against-block competition."]}],
+    highlights: [],
+  },
+  {
+    slug: "classpartai",
+    title: "ClassPart AI",
+    tagline: "AI agents that listen to a class discussion and draft evidence-backed participation feedback for the professor to approve.",
+    status: "shipped",
+    kind: "course",
+    role: "Lead developer",
+    org: "SMU IS469 Generative AI with LLMs",
+    start: "2026-08",
+    end: "2026-11",
+    team: 6,
+    stack: ["Python", "OpenAI", "Streamlit", "faster-whisper", "Docker"],
+    links: [{"label": "Source on GitHub", "href": "https://github.com/kohqingjia/classpartai", "kind": "repo"}],
+    featured: true,
+    order: 20,
+    cover: { src: classpartai_home, alt: "ClassPart AI home: class setup checklist and recent seminar sessions", width: 1600, height: 1000 },
+    gallery: [{ src: classpartai_how_it_works, alt: "How it works page tracing the agents from listener to delivery", width: 1600, height: 1000, caption: "How it works: the agents and what each one checks" },
+      { src: classpartai_agent_workspace, alt: "Assessment workspace showing the seven agent stages for a seminar", width: 1440, height: 1100, caption: "Seven agent stages, from listener to delivery" },
+      { src: classpartai_evidence, alt: "Evidence step: research agent tracing every grade back to a passage", width: 1440, height: 1100, caption: "Every grade traces back to a passage and a citation" }],
+    sections: [{"heading": "What it is\nA seven-step multi-agent workflow: a listener turns the recording into speaker-labelled turns, a coordinator plans the work, a research agent runs agentic retrieval over course material, and a judge, an auditor and a feedback agent turn the evidence into feedback. Nothing reaches students until the professor approves it.", "body": []}, {"heading": "What I did\nLed development and authored most of the merged pull requests. I deployed the demo on my own server and kept it running through the team's changes.", "body": []}, {"heading": "What I learned\nAgents need budgets and guardrails as much as prompts. Every run has a hard cap on model calls, tools and time.", "body": []}],
+    highlights: [{"value": "7", "label": "agent steps"}, {"value": "6", "label": "person team"}],
+  },
+  {
+    slug: "connectsphere",
+    title: "ConnectSphere",
+    tagline: "An event-operations platform that takes campus events from venue request to safety review, equipment and sign-ups.",
+    status: "building",
+    kind: "course",
+    role: "Developer",
+    org: "SMU IS212 Software Project Management",
+    start: "2026-08",
+    team: 6,
+    stack: ["TypeScript", "PostgreSQL", "Playwright", "Linear"],
+    links: [],
+    featured: true,
+    order: 2,
+    cover: { src: connectsphere_c4_container, alt: "C4 container diagram of ConnectSphere", width: 1004, height: 872 },
+    gallery: [{ src: connectsphere_c4_context, alt: "C4 context diagram showing every user role around ConnectSphere", width: 1282, height: 1052, caption: "System context: every role the platform serves" }],
+    sections: [{"heading": "How we work\nA six-person Scrum team with weekly sprints and rotating Dev, PO and Scrum Master roles, working through a backlog of 161 stories. Work ships as stacked pull requests with unit, integration and Playwright tests in CI.", "body": []}, {"heading": "What I did\nShipped 13 stories and about 370 test cases, including venue records, request lists, auto-assignment and reservation release.", "body": []}],
+    highlights: [{"value": "161", "label": "story backlog"}, {"value": "13", "label": "stories I shipped"}, {"value": "~370", "label": "test cases"}],
+  },
+  {
+    slug: "flashbyte",
+    title: "FlashByte",
+    tagline: "A spaced-repetition flashcard web app with decks, rich-text cards and image uploads.",
+    status: "shipped",
+    kind: "personal",
+    role: "Solo developer",
+    start: "2026-05",
+    stack: ["Next.js", "TypeScript", "Supabase"],
+    links: [{"label": "Live app", "href": "https://flash-byte.vercel.app", "kind": "live"}],
+    featured: false,
+    order: 100,
+    gallery: [],
+    sections: [],
+    highlights: [],
+  },
+  {
+    slug: "hanly",
+    title: "Hanly",
+    tagline: "An English–Chinese vocabulary app with context-aware translation and FSRS spaced-repetition flashcards.",
+    status: "shipped",
+    kind: "personal",
+    role: "Solo developer",
+    start: "2026-06",
+    stack: ["Flutter", "Dart", "Supabase", "OpenAI"],
+    links: [{"label": "Source on GitHub", "href": "https://github.com/kohqingjia/Hanly", "kind": "repo"}],
+    featured: false,
+    order: 90,
+    gallery: [],
+    sections: [],
+    highlights: [],
+  },
+  {
+    slug: "hdb-prices",
+    title: "HDB resale prices",
+    tagline: "A linear-regression model of Singapore HDB resale prices across more than 200,000 transactions.",
+    status: "archived",
+    kind: "course",
+    role: "Project lead",
+    org: "SMU COR1305",
+    start: "2025-08",
+    end: "2025-12",
+    stack: ["R"],
+    links: [],
+    featured: false,
+    order: 120,
+    gallery: [],
+    sections: [{"heading": "Overview", "body": ["Out-of-sample R² of about 0.75."]}],
+    highlights: [{"value": "200K+", "label": "transactions"}, {"value": "0.75", "label": "out-of-sample R²"}],
+  },
+  {
+    slug: "knotty",
+    title: "Knotty",
+    tagline: "A usability study comparing two app designs in a 30-person within-subjects Maze test.",
+    status: "archived",
+    kind: "course",
+    role: "Team member",
+    org: "SMU IS221",
+    start: "2025-08",
+    end: "2025-12",
+    stack: ["Maze", "Figma"],
+    links: [],
+    featured: false,
+    order: 130,
+    gallery: [],
+    sections: [{"heading": "Overview", "body": ["Participants rated the new design more intuitive (Wilcoxon, 8.3 vs 7.2, p = 0.034). The preference result (20 vs 10, p = 0.099) was not significant, and the page says so."]}],
+    highlights: [{"value": "30", "label": "participants"}, {"value": "p = 0.034", "label": "more intuitive"}],
+  },
+  {
+    slug: "metromind",
+    title: "MetroMind",
+    tagline: "A five-agent pipeline that forecasts transit demand one to three hours ahead and escalates decisions to a human.",
+    status: "shipped",
+    kind: "hackathon",
+    role: "Team member",
+    org: "Hack For Cities 2026 · Finalist, Most Innovative",
+    start: "2026-03",
+    end: "2026-03",
+    team: 6,
+    stack: ["Python", "LLM agents"],
+    links: [],
+    featured: true,
+    order: 50,
+    cover: { src: metromind_dashboard, alt: "MetroMind dashboard: Singapore demand map, forecasts and agent activity", width: 1600, height: 932 },
+    gallery: [{ src: metromind_agent_pipeline, alt: "Slide showing five agents working as a pipeline", width: 1600, height: 900, caption: "Monitor, Planner, Policy, Coordinator, Executor" },
+      { src: metromind_forecasting, alt: "Slide explaining how the forecasting works", width: 1600, height: 900, caption: "How the forecasting works" }],
+    sections: [{"heading": "What it is\nMonitor, Planner, Policy, Coordinator and Executor agents with an EMA demand forecast, cost units and a human escalation path.", "body": []}],
+    highlights: [{"value": "5", "label": "agents"}, {"value": "3 h", "label": "forecast horizon"}],
+  },
+  {
+    slug: "picadilly",
+    title: "Picadilly Tailors",
+    tagline: "An AI styling journey for a Singapore bespoke tailor founded in 1930, from occasion to a suit recommendation.",
+    status: "shipped",
+    kind: "course",
+    role: "Team member",
+    org: "SMU IS215 Digital Business Technologies and Transformation",
+    start: "2026-08",
+    end: "2026-11",
+    stack: ["Next.js", "OpenAI API"],
+    links: [{"label": "Source on GitHub", "href": "https://github.com/kohqingjia/DBTTsingaporesuits", "kind": "repo"}],
+    featured: false,
+    order: 80,
+    cover: { src: picadilly_title, alt: "Picadilly Tailors project title slide", width: 1600, height: 900 },
+    gallery: [],
+    sections: [],
+    highlights: [],
+  },
+  {
+    slug: "promyro",
+    title: "Promyro energy platform",
+    tagline: "A multi-tenant energy management system for European buildings, covering solar, batteries, EV chargers, costs and CO2.",
+    status: "shipped",
+    kind: "work",
+    role: "AI and agentic developer",
+    org: "Promyro",
+    start: "2026-05",
+    end: "2026-09",
+    stack: ["Python", "FastAPI", "PostgreSQL", "Next.js", "Raspberry Pi", "Modbus TCP"],
+    links: [],
+    featured: true,
+    order: 40,
+    gallery: [],
+    sections: [{"heading": "What it is\nA live energy-flow map from grid, PV and battery through the building to the EV chargers, with dashboards for cost, CO2 and peak demand, plus spot-price invoicing.", "body": []}, {"heading": "What I did\nBuilt it from the ground up in 12 weeks with AI coding agents and led day-to-day development in a three-person team. I wrote a Raspberry Pi edge agent that reads four KEBA chargers and a KOSTAL inverter over Modbus TCP. I also built an \"Ask AI\" tool-calling agent that answers energy questions from the database. It is read-only and never stores chats.", "body": []}],
+    highlights: [{"value": "12 weeks", "label": "from zero to product"}, {"value": "2", "label": "customers preparing pilots"}],
+  },
+  {
+    slug: "sharebite",
+    title: "ShareBite",
+    tagline: "A food-sharing web app that connects donors with people who can use their surplus food.",
+    status: "archived",
+    kind: "course",
+    role: "Team member",
+    org: "SMU IS216 Web Application Development II",
+    start: "2025-08",
+    end: "2025-12",
+    stack: ["JavaScript", "Firebase"],
+    links: [{"label": "Live app", "href": "https://wad-g5-t9-share-bite.vercel.app", "kind": "live"}],
+    featured: false,
+    order: 110,
+    cover: { src: sharebite_home, alt: "ShareBite home page: find food near you or share your food", width: 1600, height: 1000 },
+    gallery: [{ src: sharebite_features, alt: "Slide listing ShareBite's six core features", width: 1600, height: 900, caption: "The six core features" }],
+    sections: [],
+    highlights: [],
+  },
+  {
+    slug: "silentlink",
+    title: "SilentLink",
+    tagline: "A local-first research platform that records AirPods head motion to study silent articulation. It makes no transcription claims.",
+    status: "building",
+    kind: "research",
+    role: "Solo developer",
+    start: "2026-10",
+    stack: ["Swift", "Core Motion", "FastAPI", "PostgreSQL"],
+    links: [{"label": "Source on GitHub", "href": "https://github.com/kohqingjia/silentlink", "kind": "repo"}, {"label": "Research dashboard", "href": "https://silentlink.187-52-125-31.sslip.io", "kind": "live"}],
+    featured: true,
+    order: 1,
+    cover: { src: silentlink_dashboard, alt: "SilentLink research workspace overview", width: 1600, height: 1000 },
+    gallery: [{ src: silentlink_dashboard_scroll, alt: "SilentLink recording library and signal explorer", width: 1600, height: 1000, caption: "From observation to evidence: the recording library" }],
+    sections: [{"heading": "What it is\nAn iPhone recorder for the processed motion Apple exposes from AirPods, with a private research API and dashboard behind it.", "body": []}, {"heading": "Why it is honest about its limits\nWhether this signal holds speech information is an open question. The project measures first and makes no claims.", "body": []}],
+    highlights: [],
+  },
+  {
+    slug: "stardyhub",
+    title: "StardyHub",
+    tagline: "My self-hosted study hub, with a task board, modules, materials and AI-generated notes, flashcards and practice questions.",
+    status: "building",
+    kind: "personal",
+    role: "Solo developer",
+    start: "2026-09",
+    stack: ["Next.js", "TypeScript", "Drizzle", "PostgreSQL", "pgvector"],
+    links: [],
+    featured: true,
+    order: 3,
+    gallery: [],
+    sections: [{"heading": "Why\nI wanted one place where every course's slides become something I can revise from.", "body": []}],
+    highlights: [],
+  },
+  {
+    slug: "treatsure",
+    title: "treatsure.co",
+    tagline: "The relaunched website for treatsure, a Singapore food-rescue company, in English and Chinese for Singapore and Malaysia.",
+    status: "shipped",
+    kind: "work",
+    role: "Agentic AI solutions engineering intern",
+    org: "treatsure",
+    start: "2026-08",
+    end: "2026-10",
+    stack: ["Next.js", "Payload CMS", "TypeScript", "Claude Code"],
+    links: [{"label": "treatsure.co", "href": "https://treatsure.co", "kind": "live"}],
+    featured: true,
+    order: 30,
+    cover: { src: treatsure_home, alt: "treatsure.co home page hero: treat food as treasure", width: 1600, height: 1000 },
+    gallery: [{ src: treatsure_home_scroll, alt: "Partner restaurants and impact figures on treatsure.co", width: 1600, height: 1000, caption: "Partners and impact, editable by the owner in the CMS" },
+      { src: treatsure_home_scroll_2, alt: "Business verticals section on treatsure.co", width: 1600, height: 1000, caption: "Business verticals" },
+      { src: treatsure_our_journey, alt: "Our journey timeline page on treatsure.co", width: 1440, height: 900, caption: "Our journey timeline" },
+      { src: treatsure_mobile, alt: "treatsure.co on a phone", width: 780, height: 1688, caption: "Mobile" }],
+    sections: [{"heading": "What it is\nA bilingual marketing site with a CMS, plus a read-only sales dashboard over more than 1,500 orders a month.", "body": []}, {"heading": "What I did\nShipped the relaunch in 9 weeks by leading a workflow of Claude Code agents: parallel QA agents on isolated database copies, agent review before every merge, and a translate, critique and refine pipeline for Chinese copy. The owner edits 13 CMS sections alone, and that cut average site-update time by 80%. The dashboard turned hours of monthly Excel reporting into minutes.", "body": []}, {"heading": "Trade-off\nThe dashboard deliberately uses no AI. Finance numbers must be deterministic.", "body": []}],
+    highlights: [{"value": "9 weeks", "label": "to relaunch"}, {"value": "80%", "label": "faster site updates"}, {"value": "1,500+", "label": "orders a month on the dashboard"}],
+  },
+];
