@@ -1,0 +1,10 @@
+# Run on the VPS from the repo root: docker compose -f deploy/compose.yaml up -d --build
+services:
+  site:
+    build: { context: .., dockerfile: Dockerfile }
+    container_name: kohqingjia-site
+    restart: unless-stopped
+    networks: [stardyhub_default]
+networks:
+  stardyhub_default:
+    external: true

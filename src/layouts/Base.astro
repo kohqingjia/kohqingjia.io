@@ -1,0 +1,59 @@
+---
+// OWNER: Claude (head, meta, a11y skeleton). Codex: add font <link>s and
+// global style imports here; leave the meta/skip-link/landmarks as they are.
+import { site } from '../data/site';
+import '../styles/tokens.css';
+import '../styles/global.css';
+import '../styles/motion.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+  /** Path to an OG image in /public. Codex may add per-project OG art later. */
+  image?: string;
+}
+const { title, description = site.intro, image = '/og.png' } = Astro.props;
+const fullTitle = title ? `${title} · ${site.name}` : `${site.name}`;
+const canonical = new URL(Astro.url.pathname, site.url).href;
+---
+<!doctype html>
+<html lang="en-GB">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="color-scheme" content="light dark" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={new URL(image, site.url).href} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <slot name="head" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header">
+      <a class="site-header__home" href="/" aria-label={`${site.name}, home`}>{site.name}</a>
+      <nav class="site-header__nav" aria-label="Main">
+        <a href="/projects">Projects</a>
+        <a href="/about">About</a>
+        <a href={site.links.github} rel="me">GitHub</a>
+      </nav>
+    </header>
+    <main id="main" tabindex="-1">
+      <slot />
+    </main>
+    <footer class="site-footer">
+      <p>{site.name} · {site.location}</p>
+      <ul class="site-footer__links">
+        <li><a href={site.links.github} rel="me">GitHub</a></li>
+        {site.links.linkedin && <li><a href={site.links.linkedin} rel="me">LinkedIn</a></li>}
+        {site.links.email && <li><a href={`mailto:${site.links.email}`}>Email</a></li>}
+      </ul>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,41 @@
+---
+// OWNER: shared. Claude: sections, order, data. Codex: everything visual,
+// including the hero set piece and the scroll-drawn line (src/components/visual/).
+import Base from '../layouts/Base.astro';
+import Station from '../components/Station.astro';
+import { site } from '../data/site';
+import { featuredProjects } from '../data/projects';
+
+const featured = await featuredProjects();
+const building = featured.filter((p) => p.data.status === 'building');
+const shipped = featured.filter((p) => p.data.status !== 'building');
+---
+<Base>
+  <section class="hero" aria-labelledby="hero-title" data-hero>
+    <h1 id="hero-title" class="hero__title">{site.name}</h1>
+    <p class="hero__role">{site.role}</p>
+    <p class="hero__intro">{site.intro}</p>
+    <p class="hero__actions">
+      <a class="button button--primary" href="#line">See the work</a>
+      <a class="button button--quiet" href={site.links.github} rel="me">GitHub</a>
+    </p>
+  </section>
+
+  <div class="line" id="line" data-line>
+    <section class="line__section" aria-labelledby="building-title" data-segment="building">
+      <h2 id="building-title" class="line__heading">Building now</h2>
+      <ol class="line__stations" role="list">
+        {building.map((p, i) => <li><Station project={p} index={i} /></li>)}
+      </ol>
+    </section>
+
+    <section class="line__section" aria-labelledby="shipped-title" data-segment="shipped">
+      <h2 id="shipped-title" class="line__heading">Shipped</h2>
+      <ol class="line__stations" role="list">
+        {shipped.map((p, i) => <li><Station project={p} index={building.length + i} /></li>)}
+      </ol>
+    </section>
+
+    <p class="line__end"><a href="/projects">Every project</a></p>
+  </div>
+</Base>

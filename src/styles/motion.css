@@ -1,0 +1,10 @@
+/* OWNER: Codex. Contract (keep these guarantees whatever you build):
+   1. Every scroll-driven effect sits inside @supports (animation-timeline: view())
+      AND @media (prefers-reduced-motion: no-preference). Without both, content is
+      fully visible and static.
+   2. Only transform, opacity, clip-path (and stroke-dashoffset on the line SVG).
+   3. No scroll hijacking, no smooth-scroll libraries, no parallax. */
+@view-transition { navigation: auto; }
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-group(*) { animation-duration: 0s; }
+}

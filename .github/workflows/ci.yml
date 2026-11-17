@@ -1,0 +1,23 @@
+name: CI
+on:
+  pull_request:
+  push: { branches: [main] }
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22, cache: npm }
+      - run: npm ci
+      - run: npm run build
+      - name: Every project page exists
+        run: |
+          for f in src/content/projects/*.md; do
+            slug=$(basename "$f" .md)
+            test -f "dist/$slug/index.html" || { echo "missing page for $slug"; exit 1; }
+          done
+      - name: Page weight budget (home HTML+CSS+JS < 250 KB, excluding images/fonts)
+        run: |
+          size=$(find dist/index.html dist/_astro -type f \( -name '*.html' -o -name '*.css' -o -name '*.js' \) -exec cat {} + | wc -c)
+          echo "home text bytes: $size"; test "$size" -lt 256000

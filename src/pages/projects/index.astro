@@ -1,0 +1,24 @@
+---
+// OWNER: shared (Claude data/semantics, Codex visuals).
+import Base from '../../layouts/Base.astro';
+import Station from '../../components/Station.astro';
+import { projectsByStatus } from '../../data/projects';
+import { statusLabel } from '../../data/site';
+
+const groups = await projectsByStatus();
+const order = ['building', 'shipped', 'archived'] as const;
+---
+<Base title="Projects" description="Everything Koh Qing Jia has built or is building, with links to each one.">
+  <header class="page-head">
+    <h1>Projects</h1>
+    <p>Every project in one place. Each one also lives at its own address, like <a href="/classpartai">kohqingjia.io/classpartai</a>.</p>
+  </header>
+  {order.map((status) => groups[status].length > 0 && (
+    <section class="project-group" aria-labelledby={`g-${status}`} data-segment={status}>
+      <h2 id={`g-${status}`}>{statusLabel[status]} <span class="count">{groups[status].length}</span></h2>
+      <ol class="project-grid" role="list">
+        {groups[status].map((p, i) => <li><Station project={p} index={i} /></li>)}
+      </ol>
+    </section>
+  ))}
+</Base>

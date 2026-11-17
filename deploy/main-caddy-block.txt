@@ -1,0 +1,8 @@
+# BEGIN kohqingjia
+kohqingjia.io {
+	reverse_proxy kohqingjia-site:80
+}
+www.kohqingjia.io {
+	redir https://kohqingjia.io{uri} permanent
+}
+# END kohqingjia
