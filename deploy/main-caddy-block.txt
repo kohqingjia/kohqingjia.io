@@ -1,6 +1,26 @@
 # BEGIN kohqingjia
 kohqingjia.io {
 	reverse_proxy kohqingjia-site:80
+	# Access log for visit stats (deploy/stats.sh). IPs are truncated, nothing leaves the VPS, kept 30 days.
+	log {
+		output file /data/logs/kohqingjia.log {
+			roll_size 20MiB
+			roll_keep 5
+			roll_keep_for 720h
+		}
+		format filter {
+			request>remote_ip ip_mask {
+				ipv4 24
+				ipv6 48
+			}
+			request>client_ip ip_mask {
+				ipv4 24
+				ipv6 48
+			}
+			request>headers>Cookie delete
+			request>headers>Authorization delete
+		}
+	}
 }
 www.kohqingjia.io {
 	redir https://kohqingjia.io{uri} permanent

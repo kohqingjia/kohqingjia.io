@@ -12,4 +12,6 @@ npm run build    # GitHub snapshot → typecheck → vite build → per-route HT
 - A project at `src/data/projects.ts` with slug `x` is served at `/x`.
 - Share images: after changing a project cover, run `uv run --no-project --with pillow python scripts/og-images.py` to refresh `public/og/<slug>.jpg`.
 - The résumé is `public/KohQingJia_Resume.pdf`, linked as `/cv`.
-- Deploy: `./deploy/deploy.sh`. Agent coordination: `AGENTS.md`.
+- Deploy: merging to `main` deploys automatically within ~5 minutes once CI passes (`deploy/autodeploy.sh`, cron on the VPS). `./deploy/deploy.sh` deploys by hand.
+- Visit stats: `./deploy/stats.sh` builds a report from the server's access log (no tracking script, no cookies).
+- Agent coordination: `AGENTS.md`.
