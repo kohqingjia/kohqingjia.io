@@ -27,28 +27,12 @@ const available = new Set([
   'linear',
   'figma',
 ]);
-export default function SkillIcon({
-  name,
-  icon,
-}: {
-  name: string;
-  icon?: string;
-}) {
+/** Real brand logo only. Skills without one render as plain text (no fake monograms). */
+export default function SkillIcon({ icon }: { name?: string; icon?: string }) {
+  if (!icon || !available.has(icon)) return null;
   return (
     <span className="skill-icon" aria-hidden="true">
-      {icon && available.has(icon) ? (
-        <img
-          src={`/icons/${icon}.svg`}
-          alt=""
-          width="20"
-          height="20"
-          loading="lazy"
-        />
-      ) : (
-        <span className="skill-monogram">
-          {name.replace(/[^a-z]/gi, '').slice(0, 2)}
-        </span>
-      )}
+      <img src={`/icons/${icon}.svg`} alt="" width="20" height="20" loading="lazy" />
     </span>
   );
 }

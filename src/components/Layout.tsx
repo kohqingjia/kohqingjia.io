@@ -3,7 +3,6 @@ import { useRef } from 'react';
 import { Link, Outlet, ScrollRestoration, useLocation } from 'react-router';
 import type { MouseEvent } from 'react';
 import { site } from '../data/site';
-import PixelIcon, { type PixelIconName } from './PixelIcon';
 import ThemeToggle from './ThemeToggle';
 import { DeckMark } from './NameDeck';
 const nav = [
@@ -34,7 +33,6 @@ export default function Layout() {
     <>
       {nav.map((n) => (
         <Link key={n.to} to={n.to} onClick={onNav(n.to)}>
-          <PixelIcon name={n.icon as PixelIconName} />
           {n.label}
         </Link>
       ))}
@@ -75,35 +73,6 @@ export default function Layout() {
       <main id="main" tabIndex={-1}>
         <Outlet />
       </main>
-      <footer className="site-footer">
-        <div className="footer-signoff">
-          <img
-            src="/sprites/buddy-sleep.svg"
-            width="64"
-            height="64"
-            alt=""
-            loading="lazy"
-          />
-          <p>
-            © {new Date().getFullYear()} {site.name} · {site.location}
-          </p>
-        </div>
-        <ul>
-          <li>
-            <a href={site.links.resume}>Résumé</a>
-          </li>
-          <li>
-            <a href={site.links.github} rel="me">
-              GitHub
-            </a>
-          </li>
-          <li>
-            <a href={site.links.linkedin} rel="me">
-              LinkedIn
-            </a>
-          </li>
-        </ul>
-      </footer>
       {/* Match the reset layer so this also overrides Tailwind’s important hidden rule. */}
       <noscript>
         <style>
