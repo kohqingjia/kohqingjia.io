@@ -1,4 +1,6 @@
 // OWNER: Claude. Site-wide facts (from QJ's Nov 2026 résumé). Empty values are not rendered.
+import portrait from '../assets/me/portrait.webp';
+import square from '../assets/me/square.webp';
 export const site = {
   name: 'Koh Qing Jia',
   short: 'QJ',
@@ -20,8 +22,12 @@ export const site = {
   ],
   location: 'Singapore',
   openTo: 'Open to product, data and AI engineering roles',
-  /** TODO(QJ): add a portrait at public/me.jpg and set this to '/me.jpg'. */
-  photo: '',
+  /** QJ's photo (metadata stripped). portrait = 4:5 with the mountain view; square = upper body, for avatars. */
+  photo: {
+    portrait: { src: portrait, width: 960, height: 1200 },
+    square: { src: square, width: 640, height: 640 },
+    alt: 'Koh Qing Jia smiling on a stone terrace above green mountains and rice terraces',
+  },
   links: {
     github: 'https://github.com/kohqingjia',
     githubHandle: 'kohqingjia',

@@ -33,7 +33,9 @@ export default function Home() {
 
       <section id="about" className={`${wrap} scroll-mt-24 py-16`} aria-labelledby="about-title">
         <div className={sectionHead}><p className={eyebrow}>About</p><h2 id="about-title" className="text-3xl font-medium">About me</h2></div>
-        <div className="grid gap-8 md:grid-cols-[1.2fr_1fr]">
+        <div className="grid gap-8 md:grid-cols-[16rem_1.2fr_1fr]">
+          <img src={site.photo.portrait.src} alt={site.photo.alt} width={site.photo.portrait.width} height={site.photo.portrait.height}
+            loading="lazy" decoding="async" className="aspect-[4/5] w-full max-w-64 rounded-2xl object-cover" />
           <div className="space-y-4 text-slate-600 dark:text-slate-300">{site.about.map((p) => <p key={p}>{p}</p>)}</div>
           <dl className="grid grid-cols-2 gap-4">
             {site.facts.map((f) => (
