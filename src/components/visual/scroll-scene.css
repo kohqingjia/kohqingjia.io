@@ -32,7 +32,7 @@
   opacity: 0.5;
 }
 .dark .scroll-scene__stage {
-  opacity: 0.36;
+  opacity: 0.72;
 }
 .scroll-scene__stage img {
   position: absolute;
@@ -113,7 +113,7 @@
     opacity: 0.4;
   }
   .dark .scroll-scene__stage {
-    opacity: 0.32;
+    opacity: 0.64;
   }
   .scroll-scene__helper,
   .scroll-scene__ground {
