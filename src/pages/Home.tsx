@@ -15,11 +15,13 @@ import RoleLine from '../components/RoleLine';
 import SkillIcon from '../components/SkillIcon';
 import Sprite from '../components/Sprite';
 import NameDeck from '../components/NameDeck';
+import ScrollScene from '../components/visual/ScrollScene';
 import { useTitle } from '../lib/useTitle';
 export default function Home() {
   useTitle(site.name);
   return (
-    <>
+    <div className="home-with-scene">
+      <ScrollScene />
       <section
         className="hero page-width"
         aria-labelledby="hero-title"
@@ -243,6 +245,6 @@ export default function Home() {
           </ul>
         </div>
       </section>
-    </>
+    </div>
   );
 }
