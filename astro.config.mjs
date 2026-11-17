@@ -6,4 +6,8 @@ export default defineConfig({
   site: 'https://kohqingjia.io',
   trailingSlash: 'ignore',
   build: { format: 'directory' },
+  redirects: {
+    '/cv': '/KohQingJia_Resume.pdf',
+    '/resume': '/KohQingJia_Resume.pdf',
+  },
 });

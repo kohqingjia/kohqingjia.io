@@ -34,4 +34,4 @@ export function period(p: Project) {
 }
 
 /** Top-level routes a project slug must never take. */
-export const RESERVED_SLUGS = new Set(['projects', 'about', '404', 'sprites', 'resume']);
+export const RESERVED_SLUGS = new Set(['projects', 'about', '404', 'sprites', 'resume', 'cv']);
