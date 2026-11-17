@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="528" height="400" viewBox="0 0 132 100" shape-rendering="crispEdges">
+<!-- Hand-drawn on an integer pixel grid. Warm light falls from the upper left. -->
+<g fill="#27364d"><path d="M11 83h112v1H11zM18 88h96v1H18zM31 92h68v1H31z"/><path d="M89 10h27v25H89z"/></g>
+<path fill="#f3dfb6" d="M91 12h23v21H91z"/><path fill="#85a58a" d="M93 14h19v17H93z"/><path fill="#27364d" d="M94 27h4v-6h4v4h4v-8h4v12H94z"/>
+<path fill="#27364d" d="M16 17h24v2H16zM38 18h2v26h-2zM30 43h17v3H30z"/>
+<path fill="#d6ae61" d="M13 18h11v2h2v7H11v-7h2z"/><path fill="#fff8e8" d="M12 26h13v2H12zM15 18h7v2h-7z"/>
+<path fill="#27364d" d="M16 64h104v5H16zM22 68h5v18h-5zM110 68h5v18h-5z"/><path fill="#d6ae61" d="M17 63h102v3H17zM23 70h2v14h-2zM111 70h2v14h-2z"/>
+<!-- QJ: short dark hair, smile, black tee, denim shorts and white shoes. -->
+<path fill="#27364d" d="M48 43h22v4h3v27h-4v7h-4v7h-4v-7H50v-8h-4V47h2z"/>
+<path fill="#5279b8" d="M48 48h22v23H48zM52 72h16v6H52z"/>
+<path fill="#a5bddb" d="M49 48h19v2H49z"/>
+<path fill="#27364d" d="M51 21h11v2h5v4h2v13h-3v4H50v-4h-3V27h2v-4h2z"/>
+<path fill="#c58f7c" d="M50 28h16v12h-3v5h-10v-5h-3z"/>
+<path fill="#f3dfb6" d="M51 28h13v2H51zM50 30h2v8h-2z"/>
+<path fill="#27364d" d="M50 24h15v4h-4v-2h-5v3h-6zM53 33h2v2h-2zM61 33h2v2h-2zM54 38h8v2h-2v2h-4v-2h-2z"/>
+<path fill="#fff8e8" d="M55 38h6v1h-6z"/>
+<path fill="#27364d" d="M50 45h16v3h4v6h5v6H64v-5h-3v12H49V53h-3v-5h4z"/>
+<path fill="#fff8e8" d="M54 49h6v1h-6zM55 51h4v1h-4z"/>
+<path fill="#27364d" d="M62 46h1v8h-1v5h-1v4h-1v3h-1v-5h1v-6h1v-6h1z"/>
+<path fill="#f3dfb6" d="M72 54h6v5h-6zM45 53h4v9h-4z"/>
+<path fill="#a5bddb" d="M50 66h14v8H50z"/>
+<path fill="#c58f7c" d="M54 75h4v8h-4zM63 75h4v8h-4z"/>
+<path fill="#27364d" d="M51 83h9v6H50v-4h1zM61 83h9v6H60v-4h1z"/>
+<path fill="#fff8e8" d="M54 82h4v3h-4zM63 82h4v3h-4zM52 85h7v3h-8v-2h1zM62 85h7v3h-8v-2h1z"/>
+<path fill="#85a58a" d="M53 86h1v1h-1zM63 86h1v1h-1z"/>
+<path fill="#d6ae61" d="M56 86h1v1h-1zM66 86h1v1h-1z"/>
+<!-- Laptop, mug and plant. -->
+<path fill="#27364d" d="M73 42h28v19h3v2H68v-2h5z"/><path fill="#85a58a" d="M76 45h22v14H76z"/><path fill="#27364d" d="M79 48h3v2h2v2h-2v2h-3v-2h2v-2h-2zM87 54h7v1h-7z"/><path fill="#a5bddb" d="M71 61h30v1H71z"/>
+<path fill="#27364d" d="M34 55h9v2h3v5h-3v1h-9z"/><path fill="#fff8e8" d="M35 56h7v6h-7zM43 58h2v3h-2z"/><path fill="#c58f7c" d="M36 59h3v2h-3z"/>
+<path fill="#85a58a" d="M108 43h3v8h3v-5h4v6h-7v5h-3v-4h-6v-6h4v4h2z"/><path fill="#27364d" d="M104 56h12v7h-12z"/><path fill="#c58f7c" d="M105 57h10v5h-10z"/>
+<!-- Little helper at the edge of the desk. -->
+<path fill="#27364d" d="M21 41h2v4h7v3h2v12h-3v3H17v-3h-3V48h3v-3h4z"/><path fill="#85a58a" d="M18 47h11v3h1v9h-2v2H18v-3h-2v-9h2z"/><path fill="#fff8e8" d="M18 47h10v2H18z"/><path fill="#a5bddb" d="M19 51h9v6h-9z"/><path fill="#27364d" d="M20 52h2v2h-2zM25 52h2v2h-2zM23 56h2v1h-2z"/><path fill="#d6ae61" d="M21 40h3v3h-3z"/>
+<!-- Courier buddy with a little folder on the floor. -->
+<path fill="#27364d" d="M89 72h3v3h9v3h2v8h-3v3H87v-3h-3v-8h3v-3h2z"/><path fill="#a5bddb" d="M88 77h12v2h1v6h-3v2H88v-3h-2v-5h2z"/><path fill="#fff8e8" d="M88 77h11v2H88z"/><path fill="#27364d" d="M90 80h2v2h-2zM96 80h2v2h-2zM91 87h2v4h-2zM97 87h2v4h-2z"/><path fill="#d6ae61" d="M102 78h6v2h5v8h-11z"/><path fill="#f3dfb6" d="M104 82h8v1h-8z"/>
+<path fill="#27364d" d="M31 78h13v8H31z"/><path fill="#c58f7c" d="M32 79h11v2H32z"/><path fill="#a5bddb" d="M32 82h11v3H32z"/>
+<path fill="#85a58a" d="M72 14h2v5h-2zM70 16h6v1h-6zM7 36h2v5H7zM5 38h6v1H5zM119 69h2v5h-2zM117 71h6v1h-6z"/>
+</svg>
