@@ -11,7 +11,7 @@ export default function GithubActivity() {
     <figure className="github-activity">
       <figcaption>
         <div>
-          <p className="eyebrow">Building in the open</p>
+          <p className="eyebrow">GitHub activity</p>
           <a href={site.links.github}>
             @{data?.user || site.links.githubHandle}
             <span aria-hidden="true"> ↗</span>

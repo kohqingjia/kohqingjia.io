@@ -32,5 +32,12 @@ export const formatMonth = (ym: string) => fmt.format(toDate(ym));
 
 /** "Aug 2026 – Oct 2026", or "Aug 2026 – Present" when there is no end date. */
 export function period(start: string, end?: string, ongoingLabel = 'Present') {
+  if (end === start) return formatMonth(start);
   return `${formatMonth(start)} – ${end ? formatMonth(end) : ongoingLabel}`;
+}
+
+/** Project dates: "Oct 2026 – Now" while building, "Mar 2026" for one-month or undated-end projects. */
+export function projectPeriod(p: { start: string; end?: string; status: string }) {
+  if (p.status === 'building') return period(p.start, p.end, 'Now');
+  return p.end ? period(p.start, p.end) : formatMonth(p.start);
 }

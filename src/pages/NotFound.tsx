@@ -4,9 +4,8 @@ export default function NotFound() {
   return (
     <section className="not-found page-width">
       <Sprite slug="not-found" file="placeholder.svg" size={128} eager />
-      <p className="eyebrow">404 / End of the line</p>
+      <p className="eyebrow">404</p>
       <h1>No page lives here</h1>
-      <p>The projects are one stop back.</p>
       <div>
         <Link className="button button--primary" to="/projects">
           See every project<span aria-hidden="true">↗</span>

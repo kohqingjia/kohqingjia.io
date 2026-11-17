@@ -8,7 +8,7 @@ export default function ProjectsPage() {
   return (
     <div className="page-width projects-page">
       <header className="page-head">
-        <p className="eyebrow">Ideas put into practice</p>
+        
         <h1>Projects</h1>
         <p>Everything I've built or am building. Each one has its own page.</p>
       </header>

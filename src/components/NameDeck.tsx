@@ -25,10 +25,6 @@ function Suit({ name }: { name: (typeof hand)[number]['suit'] }) {
 export default function NameDeck() {
   return (
     <figure className="name-deck" aria-labelledby="deck-caption">
-      <div className="name-deck__heading eyebrow" aria-hidden="true">
-        <span>A name in the cards</span>
-        <span>QJ's workshop / 01</span>
-      </div>
       <div className="name-deck__hand" aria-hidden="true">
         {hand.map(({ rank, suit, art }) => (
           <div className={`playing-card playing-card--${art}`} key={rank}>
@@ -84,12 +80,8 @@ export default function NameDeck() {
             </span>
           ))}
         </span>
-        <span className="eyebrow" aria-hidden="true">
-          Four cards, one name
-        </span>
         <span className="sr-only">
-          K, Q, J, A: K for Koh, Q for Qing, J and the final A for Jia. Four
-          cards, one name: {site.name}.
+          K, Q, J, A: {site.name}.
         </span>
       </figcaption>
     </figure>
