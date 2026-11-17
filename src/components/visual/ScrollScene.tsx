@@ -14,15 +14,15 @@ export default function ScrollScene() {
           alt=""
         />
         <img
-          className="scroll-scene__card scroll-scene__queen"
-          src="/sprites/scene-queen-support.svg"
+          className="scroll-scene__card scroll-scene__jack"
+          src="/sprites/scene-jack-support.svg"
           width="64"
           height="64"
           alt=""
         />
         <img
-          className="scroll-scene__card scroll-scene__jack"
-          src="/sprites/scene-jack-top.svg"
+          className="scroll-scene__card scroll-scene__queen"
+          src="/sprites/scene-queen-top.svg"
           width="64"
           height="64"
           alt=""

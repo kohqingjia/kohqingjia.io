@@ -51,7 +51,7 @@
 }
 /* The SVG faces meet along one edge; the open triangle stays unobstructed. */
 .scroll-scene__king,
-.scroll-scene__queen {
+.scroll-scene__jack {
   top: 122px;
   transform: none;
 }
@@ -59,11 +59,11 @@
   left: 80px;
   transform-origin: 4px 62px;
 }
-.scroll-scene__queen {
+.scroll-scene__jack {
   left: 108px;
   transform-origin: 32px 62px;
 }
-.scroll-scene__jack {
+.scroll-scene__queen {
   left: 96px;
   top: 100px;
   transform: none;
@@ -100,11 +100,11 @@
       animation: scene-king linear both;
       animation-timeline: scroll(root block);
     }
-    .scroll-scene__queen {
-      animation: scene-queen linear both;
+    .scroll-scene__jack {
+      animation: scene-jack linear both;
       animation-timeline: scroll(root block);
     }
-    .scroll-scene__jack {
+    .scroll-scene__queen {
       animation: scene-roof linear both;
       animation-timeline: scroll(root block);
     }
@@ -124,7 +124,7 @@
     transform: translate(0, 0) rotate(0deg);
   }
 }
-@keyframes scene-queen {
+@keyframes scene-jack {
   0%,
   30% {
     transform: rotate(-62deg);
