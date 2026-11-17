@@ -96,6 +96,14 @@ export default function Home() {
               ))}
             </dl>
           </div>
+          <img
+            className="about-workshop"
+            src="/sprites/workshop.svg"
+            width="264"
+            height="200"
+            alt="Pixel illustration of QJ at a laptop, with a desk lamp, a plant and two robot helpers"
+            loading="lazy"
+          />
         </div>
         <GithubActivity />
       </section>
