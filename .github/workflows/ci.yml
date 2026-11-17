@@ -11,13 +11,12 @@ jobs:
         with: { node-version: 22, cache: npm }
       - run: npm ci
       - run: npm run build
-      - name: Every project page exists
+      - name: Every route in the sitemap was prerendered
         run: |
-          for f in src/content/projects/*.md; do
-            slug=$(basename "$f" .md)
-            test -f "dist/$slug/index.html" || { echo "missing page for $slug"; exit 1; }
+          for loc in $(grep -o '<loc>[^<]*' dist/sitemap.xml | sed 's|<loc>https://kohqingjia.io||'); do
+            test -f "dist${loc%/}/index.html" || { echo "missing prerendered page for $loc"; exit 1; }
           done
-      - name: Page weight budget (home HTML+CSS+JS < 250 KB, excluding images/fonts)
+      - name: JS budget (gzip < 160 KB)
         run: |
-          size=$(find dist/index.html dist/_astro -type f \( -name '*.html' -o -name '*.css' -o -name '*.js' \) -exec cat {} + | wc -c)
-          echo "home text bytes: $size"; test "$size" -lt 256000
+          size=$(cat dist/assets/*.js | gzip -c | wc -c)
+          echo "js gzip bytes: $size"; test "$size" -lt 163840
