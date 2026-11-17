@@ -229,12 +229,9 @@ main:focus {
   transform: rotate(-9deg);
 }
 .deck-mark > span:nth-child(2) {
-  transform: translateY(-2px) rotate(-3deg);
+  transform: translateY(-2px);
 }
 .deck-mark > span:nth-child(3) {
-  transform: translateY(-2px) rotate(3deg);
-}
-.deck-mark > span:nth-child(4) {
   transform: rotate(9deg);
 }
 .desktop-nav {
@@ -314,28 +311,19 @@ main:focus {
 .hero__copy {
   min-width: 0;
 }
-.hero__hello {
-  display: flex;
-  gap: 8px;
-  align-items: center;
-  margin-bottom: 28px;
-}
-.hero__hello-mark {
-  width: 8px;
-  height: 8px;
-  background: var(--ink-3);
-  box-shadow: -2px 2px 0 var(--accent-soft);
-}
-.hero__greeting {
-  color: var(--ink-2);
-  font-size: 24px;
-  line-height: 1.3;
-  margin-bottom: 8px;
-  letter-spacing: -0.01em;
-}
 .hero h1 {
   font-size: clamp(48px, 6.4vw, 84px);
   max-width: 540px;
+}
+.hero__name-word {
+  white-space: nowrap;
+}
+.name-initial {
+  text-decoration: underline;
+  text-decoration-color: var(--ink-3);
+  text-decoration-thickness: 0.045em;
+  text-underline-offset: 0.14em;
+  text-decoration-skip-ink: none;
 }
 .role-line {
   display: flex;
@@ -375,17 +363,6 @@ main:focus {
   gap: 12px;
   margin-top: 28px;
 }
-.hero__scroll {
-  grid-column: 1/-1;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-  padding-top: 16px;
-  color: var(--ink-3);
-  border-bottom: 1px solid var(--line);
-  padding-bottom: 16px;
-}
 /* A personal deck: paper stays warm in the workshop's day and night modes. */
 .name-deck {
   container-type: inline-size;
@@ -394,16 +371,6 @@ main:focus {
   justify-self: center;
   align-self: center;
   padding-block: 20px;
-}
-.name-deck__heading {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-  margin-inline: 20px;
-  padding-bottom: 16px;
-  border-bottom: 1px solid var(--line);
-  font-size: 9px;
 }
 .name-deck__hand {
   display: flex;
@@ -414,11 +381,11 @@ main:focus {
   isolation: isolate;
 }
 .playing-card {
-  --angle: -16deg;
-  --lift: 20px;
+  --angle: -14deg;
+  --lift: 16px;
   position: relative;
   flex: none;
-  width: clamp(104px, 27cqi, 148px);
+  width: clamp(112px, 31cqi, 160px);
   aspect-ratio: 2 / 3;
   display: grid;
   place-items: center;
@@ -430,20 +397,16 @@ main:focus {
   transform: translateY(var(--lift)) rotate(var(--angle));
 }
 .playing-card + .playing-card {
-  margin-left: calc(-1 * clamp(24px, 72px - 8cqi, 48px));
+  margin-left: calc(-1 * clamp(16px, 48px - 4cqi, 32px));
 }
 .playing-card--queen {
-  --angle: -5deg;
+  --angle: 0deg;
   --lift: -4px;
   color: #8d453c;
 }
 .playing-card--jack {
-  --angle: 6deg;
-  --lift: -4px;
-}
-.playing-card--ace {
-  --angle: 17deg;
-  --lift: 20px;
+  --angle: 14deg;
+  --lift: 16px;
 }
 .playing-card::before {
   content: '';
@@ -492,53 +455,9 @@ main:focus {
   background: #d6ae61;
   transform: rotate(-16deg);
 }
-.playing-card__ace {
-  width: 128px;
-  height: 128px;
-  image-rendering: pixelated;
-}
-.name-deck__caption {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 8px 16px;
-  margin: 16px 20px 0;
-  padding-top: 20px;
-  border-top: 1px solid var(--line);
-}
-.name-deck__name {
-  display: flex;
-  gap: 8px;
-  color: var(--ink-2);
-  font-size: 22px;
-  letter-spacing: -0.02em;
-}
-.name-deck__name b {
-  color: var(--ink);
-  font-weight: 600;
-  text-decoration: underline;
-  text-decoration-color: var(--ink-3);
-  text-underline-offset: 6px;
-}
-.name-deck__name > span:last-child b:last-child {
-  text-transform: uppercase;
-}
-.name-deck__caption .eyebrow {
-  font-size: 9px;
-}
-@container (max-width: 540px) {
-  .playing-card__ace {
-    width: 64px;
-    height: 64px;
-  }
-}
 @container (max-width: 440px) {
   .name-deck__hand {
     min-height: 260px;
-  }
-  .playing-card__court {
-    transform: translateX(-16px);
   }
   .playing-card__court img:last-child,
   .playing-card__rule {
@@ -556,14 +475,6 @@ main:focus {
   .playing-card__index svg {
     width: 8px;
     height: 8px;
-  }
-  .name-deck__caption {
-    justify-content: center;
-  }
-  .name-deck__heading {
-    margin-inline: 12px;
-    font-size: 8px;
-    gap: 8px;
   }
 }
 .home-section {
@@ -1537,13 +1448,6 @@ main:focus {
     padding-top: 52px;
     gap: 32px;
   }
-  .hero__hello {
-    font-size: 10px;
-    margin-bottom: 24px;
-  }
-  .hero__greeting {
-    font-size: 23px;
-  }
   .hero h1 {
     font-size: clamp(54px, 12vw, 76px);
     max-width: 100%;
@@ -1574,9 +1478,6 @@ main:focus {
   .name-deck {
     max-width: 520px;
     padding-block: 0;
-  }
-  .hero__scroll {
-    padding-top: 0;
   }
   .home-section {
     padding-top: 40px;
