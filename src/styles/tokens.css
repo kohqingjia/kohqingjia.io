@@ -1,23 +1,19 @@
-@font-face {
-  font-family: 'Space Grotesk Variable';
-  font-style: normal;
-  font-display: swap;
-  font-weight: 300 700;
-  src: url('@fontsource-variable/space-grotesk/files/space-grotesk-latin-wght-normal.woff2') format('woff2');
-}
-/* The route atlas: warm paper, ink, and one plum route. */
+/* Self-hosted Latin subsets. Filenames are versioned for immutable caching. */
+@font-face { font-family: 'IBM Plex Mono'; font-style: normal; font-display: swap; font-weight: 400; src: url('/fonts/ibm-plex-mono-latin-400-v5.3.0.woff2') format('woff2'); }
+@font-face { font-family: 'Space Grotesk Variable'; font-style: normal; font-display: swap; font-weight: 300 700; src: url('/fonts/space-grotesk-latin-v5.3.0.woff2') format('woff2'); }
+/* QJ: a blue route through a portfolio of software and experiments. */
 :root {
   color-scheme: light dark;
-  --bg: #f5f3ed;
-  --surface: #fcfbf7;
-  --surface-2: #eae7df;
-  --text: #28272b;
-  --text-2: #55535c;
-  --text-3: #6d6973;
-  --line: #d4d0c8;
-  --accent: #713e68;
-  --accent-soft: #eae0e7;
-  --on-accent: #fcfbf7;
+  --bg: #f7f9fc;
+  --surface: #ffffff;
+  --surface-2: #eaf0f7;
+  --text: #182237;
+  --text-2: #48576d;
+  --text-3: #627087;
+  --line: #dbe2ec;
+  --accent: #2457c5;
+  --accent-soft: #eaf0ff;
+  --on-accent: #ffffff;
   --font-sans: 'Space Grotesk Variable', 'Arial', sans-serif;
   --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
   --space-1: 4px;
@@ -29,10 +25,10 @@
   --space-12: 48px;
   --space-16: 64px;
   --space-24: 96px;
-  --radius-sm: 4px;
-  --radius-md: 8px;
+  --radius-sm: 8px;
+  --radius-md: 16px;
   --page-width: 1200px;
-  --gutter: clamp(16px, 4vw, 64px);
+  --gutter: 32px;
   --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
   --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
   /* Shared sprite palette: eight colours, top-left light. */
@@ -47,15 +43,15 @@
 }
 @media (prefers-color-scheme: dark) {
   :root {
-    --bg: #201e24;
-    --surface: #28252d;
-    --surface-2: #34303a;
-    --text: #f1eee6;
-    --text-2: #cbc4d0;
-    --text-3: #aaa1b1;
-    --line: #48424e;
-    --accent: #d2a6ca;
-    --accent-soft: #3c2e3d;
-    --on-accent: #28212b;
+    --bg: #111824;
+    --surface: #182232;
+    --surface-2: #202d41;
+    --text: #edf2fb;
+    --text-2: #c0ccde;
+    --text-3: #94a5be;
+    --line: #34435a;
+    --accent: #8bb4ff;
+    --accent-soft: #213657;
+    --on-accent: #101a2c;
   }
 }

@@ -3,7 +3,7 @@
 // including the hero set piece and the scroll-drawn line (src/components/visual/).
 import Base from '../layouts/Base.astro';
 import Station from '../components/Station.astro';
-import RouteAtlas from '../components/visual/RouteAtlas.astro';
+import Sprite from '../components/Sprite.astro';
 import RouteTrack from '../components/visual/RouteTrack.astro';
 import { site } from '../data/site';
 import { featuredProjects } from '../data/projects';
@@ -14,27 +14,26 @@ const shipped = featured.filter((p) => p.data.status !== 'building');
 ---
 <Base>
   <section class="hero" aria-labelledby="hero-title" data-hero>
-    <p class="hero__index eyebrow"><span>QJ / Personal route atlas</span><span>{site.location}</span></p>
-    <div class="hero__copy">
-    <h1 id="hero-title" class="hero__title">{site.name}</h1>
-    <p class="hero__role">{site.role}</p>
+    <div class="hero__identity">
+      <Sprite file="qj.svg" slug="qj-hero" />
+      <p><span class="hero__name">{site.name}</span><span class="eyebrow">{site.location} · {site.role}</span></p>
+    </div>
+    <h1 id="hero-title" class="hero__title">Building useful things<br />with <span>AI &amp; data</span></h1>
     <p class="hero__intro">{site.intro}</p>
     <p class="hero__actions">
-      <a class="button button--primary" href="#line">See the work</a>
-      <a class="button button--quiet" href={site.links.resume}>Résumé</a>
+      <a class="button button--primary" href="#line">Explore my work <span aria-hidden="true">↘</span></a>
+      <a class="button" href={site.links.resume}>Résumé <span class="eyebrow" aria-hidden="true">PDF</span><span class="visually-hidden"> (PDF)</span></a>
     </p>
-    </div>
-    <RouteAtlas />
-    <p class="hero__foot eyebrow"><span>Ideas, experiments, useful things</span><a href="#line">Follow the line <span aria-hidden="true">↓</span></a></p>
+    <p class="hero__foot eyebrow"><span>From experiments to real users</span><a href="#line" aria-label="Scroll to selected work"><span aria-hidden="true">↓</span></a></p>
   </section>
 
   <div class="line" id="line" data-line>
-    <div class="line__intro"><p class="eyebrow">Selected stops</p><p class="eyebrow">{String(featured.length).padStart(2, '0')} projects along the way</p></div>
+    <div class="line__intro"><p class="eyebrow">Selected work</p><p class="eyebrow">{String(featured.length).padStart(2, '0')} projects on this route</p></div>
     <section class="line__section" aria-labelledby="building-title" data-segment="building">
       <RouteTrack />
       <h2 id="building-title" class="line__heading">Building now</h2>
       <ol class="line__stations" role="list">
-        {building.map((p, i) => <li><Station project={p} index={i} /></li>)}
+        {building.map((p, i) => <li><Station project={p} index={i} preview /></li>)}
       </ol>
     </section>
 
@@ -42,10 +41,10 @@ const shipped = featured.filter((p) => p.data.status !== 'building');
       <RouteTrack />
       <h2 id="shipped-title" class="line__heading">Shipped</h2>
       <ol class="line__stations" role="list">
-        {shipped.map((p, i) => <li><Station project={p} index={building.length + i} /></li>)}
+        {shipped.map((p, i) => <li><Station project={p} index={building.length + i} preview /></li>)}
       </ol>
     </section>
 
-    <p class="line__end"><span class="eyebrow">There are more stops on this line</span><a class="button" href="/projects">Every project <span aria-hidden="true">↗</span></a></p>
+    <p class="line__end"><span class="eyebrow">More projects, more experiments</span><a class="button" href="/projects">Every project <span aria-hidden="true">↗</span></a></p>
   </div>
 </Base>

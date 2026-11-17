@@ -10,6 +10,7 @@ const order = ['building', 'shipped', 'archived'] as const;
 ---
 <Base title="Projects" description="Everything Koh Qing Jia has built or is building, with links to each one.">
   <header class="page-head">
+    <p class="eyebrow">Ideas put into practice</p>
     <h1>Projects</h1>
     <p>Every project in one place. Each one also lives at its own address, like <a href="/classpartai">kohqingjia.io/classpartai</a>.</p>
   </header>
@@ -17,7 +18,7 @@ const order = ['building', 'shipped', 'archived'] as const;
     <section class="project-group" aria-labelledby={`g-${status}`} data-segment={status}>
       <h2 id={`g-${status}`}>{statusLabel[status]} <span class="count">{groups[status].length}</span></h2>
       <ol class="project-grid" role="list">
-        {groups[status].map((p, i) => <li><Station project={p} index={i} /></li>)}
+        {groups[status].map((p, i) => <li><Station project={p} index={i} preview /></li>)}
       </ol>
     </section>
   ))}

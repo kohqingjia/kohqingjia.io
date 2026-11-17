@@ -20,5 +20,17 @@
   }
 }
 @media (prefers-reduced-motion: reduce) {
+  .sprite { view-transition-name: none !important; }
   ::view-transition-group(*) { animation-duration: 0s; }
+  ::view-transition-old(root), ::view-transition-new(root) { animation-duration: 150ms; animation-timing-function: ease; }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  ::view-transition-group(*) { animation-duration: 360ms; animation-timing-function: var(--ease-in-out); }
+  ::view-transition-old(*), ::view-transition-new(*) { animation-duration: 360ms; animation-timing-function: var(--ease-in-out); }
+  .project__links a { transition: transform 150ms ease; }
+  .project__links a:active { transform: scale(.97); }
+  @supports (animation-timeline: view()) {
+    [data-station]:focus-within { animation: none; opacity: 1; transform: none; }
+  }
 }
