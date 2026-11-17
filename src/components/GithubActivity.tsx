@@ -2,7 +2,13 @@
 import { useGithubActivity } from '../lib/github';
 import { site } from '../data/site';
 
-const shades = ['bg-slate-100 dark:bg-slate-800', 'bg-blue-200', 'bg-blue-400', 'bg-blue-600', 'bg-blue-800'];
+const shades = [
+  'bg-slate-100 dark:bg-slate-800/70',
+  'bg-blue-200 dark:bg-blue-950',
+  'bg-blue-400 dark:bg-blue-800',
+  'bg-blue-600 dark:bg-blue-600',
+  'bg-blue-800 dark:bg-blue-400',
+];
 
 export default function GithubActivity() {
   const data = useGithubActivity();
