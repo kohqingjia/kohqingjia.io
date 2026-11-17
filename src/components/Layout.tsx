@@ -1,6 +1,7 @@
 // OWNER: Codex (visual). Claude's skeleton: nav, skip link, footer, scroll restoration.
 import { Link, NavLink, Outlet, ScrollRestoration } from 'react-router';
 import { site } from '../data/site';
+import ThemeToggle from './ThemeToggle';
 
 const nav = [
   { to: '/#about', label: 'About' },
@@ -30,6 +31,7 @@ export default function Layout() {
             Résumé
           </a>
         </nav>
+        <ThemeToggle />
       </header>
       <main id="main" tabIndex={-1} className="outline-none">
         <Outlet />
