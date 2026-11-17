@@ -9,7 +9,13 @@ import classpartai_how_it_works from '../assets/projects/classpartai/how-it-work
 import classpartai_agent_workspace from '../assets/projects/classpartai/agent-workspace.webp';
 import classpartai_evidence from '../assets/projects/classpartai/evidence.webp';
 import connectsphere_c4_container from '../assets/projects/connectsphere/c4-container.webp';
-import connectsphere_c4_context from '../assets/projects/connectsphere/c4-context.webp';
+import cs_dashboard from '../assets/projects/connectsphere/coordinator-dashboard.webp';
+import cs_coordination from '../assets/projects/connectsphere/coordination.webp';
+import cs_event_page from '../assets/projects/connectsphere/event-page.webp';
+import cs_new_request from '../assets/projects/connectsphere/new-request.webp';
+import cs_venues from '../assets/projects/connectsphere/venues.webp';
+import cs_bookings from '../assets/projects/connectsphere/approved-bookings.webp';
+import cs_equipment from '../assets/projects/connectsphere/equipment.webp';
 import metromind_dashboard from '../assets/projects/metromind/dashboard.webp';
 import metromind_agent_pipeline from '../assets/projects/metromind/agent-pipeline.webp';
 import metromind_forecasting from '../assets/projects/metromind/forecasting.webp';
@@ -100,8 +106,16 @@ export const projects: Project[] = [
     links: [],
     featured: true,
     order: 2,
-    cover: { src: connectsphere_c4_container, alt: "C4 container diagram of ConnectSphere", width: 1004, height: 872 },
-    gallery: [{ src: connectsphere_c4_context, alt: "C4 context diagram showing every user role around ConnectSphere", width: 1282, height: 1052, caption: "System context: every role the platform serves" }],
+    cover: { src: cs_dashboard, alt: "ConnectSphere coordinator dashboard listing assigned events and the ones that need review", width: 1600, height: 1000 },
+    gallery: [
+      { src: cs_coordination, alt: "Coordination queue of event requests with their status", width: 1600, height: 1000, caption: "Coordination queue: every request assigned to a coordinator" },
+      { src: cs_event_page, alt: "Event page for ConnectSphere Open Day with date, venue and registration", width: 1600, height: 1000, caption: "An attendee's event page, with registration" },
+      { src: cs_new_request, alt: "New event request form with event details and proposed dates", width: 1600, height: 1000, caption: "Organisers request an event; drafts can be saved" },
+      { src: cs_venues, alt: "Venue list with capacity, facilities and layouts", width: 1600, height: 1000, caption: "Venue records: capacity, facilities and layouts" },
+      { src: cs_bookings, alt: "Approved venue bookings grouped by month", width: 1600, height: 1000, caption: "Venue staff manage approved bookings" },
+      { src: cs_equipment, alt: "Equipment catalogue with out-of-service units", width: 1600, height: 1000, caption: "Equipment catalogue with out-of-service units" },
+      { src: connectsphere_c4_container, alt: "C4 container diagram of ConnectSphere", width: 1004, height: 872, caption: "Architecture (C4 container view)" },
+    ],
     sections: [{"heading": "How we work", "body": ["A six-person Scrum team with weekly sprints and rotating Dev, PO and Scrum Master roles, working through a backlog of 161 stories. Work ships as stacked pull requests with unit, integration and Playwright tests in CI."]}, {"heading": "What I did", "body": ["Shipped 13 stories and about 370 test cases, including venue records, request lists, auto-assignment and reservation release."]}],
     highlights: [{"value": "161", "label": "story backlog"}, {"value": "13", "label": "stories I shipped"}, {"value": "~370", "label": "test cases"}],
   },
