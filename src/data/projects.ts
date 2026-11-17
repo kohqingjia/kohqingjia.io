@@ -42,7 +42,7 @@ export const projects: Project[] = [
     cover: { src: bank_complaints_topic_heatmap, alt: "Heatmap mapping LDA topics to product categories", width: 1600, height: 900 },
     gallery: [{ src: bank_complaints_classification_results, alt: "Table of macro F1 scores for the text classifiers", width: 1600, height: 900, caption: "Text classification: logistic regression led on macro F1" },
       { src: bank_complaints_risk_rating, alt: "Table comparing risk-rating models", width: 1600, height: 900, caption: "Risk rating: logistic regression beat DistilBERT on 692 labelled cases" }],
-    sections: [{"heading": "Result\nTF-IDF classifiers reached a macro F1 of 0.85. On the small hand-labelled set, logistic regression (macro F1 0.80) beat DistilBERT. That is a small-data lesson I keep coming back to.", "body": []}],
+    sections: [{"heading": "Result", "body": ["TF-IDF classifiers reached a macro F1 of 0.85. On the small hand-labelled set, logistic regression (macro F1 0.80) beat DistilBERT. That is a small-data lesson I keep coming back to."]}],
     highlights: [{"value": "144K", "label": "complaints mined"}, {"value": "0.85", "label": "macro F1"}],
   },
   {
@@ -82,7 +82,7 @@ export const projects: Project[] = [
     gallery: [{ src: classpartai_how_it_works, alt: "How it works page tracing the agents from listener to delivery", width: 1600, height: 1000, caption: "How it works: the agents and what each one checks" },
       { src: classpartai_agent_workspace, alt: "Assessment workspace showing the seven agent stages for a seminar", width: 1440, height: 1100, caption: "Seven agent stages, from listener to delivery" },
       { src: classpartai_evidence, alt: "Evidence step: research agent tracing every grade back to a passage", width: 1440, height: 1100, caption: "Every grade traces back to a passage and a citation" }],
-    sections: [{"heading": "What it is\nA seven-step multi-agent workflow: a listener turns the recording into speaker-labelled turns, a coordinator plans the work, a research agent runs agentic retrieval over course material, and a judge, an auditor and a feedback agent turn the evidence into feedback. Nothing reaches students until the professor approves it.", "body": []}, {"heading": "What I did\nLed development and authored most of the merged pull requests. I deployed the demo on my own server and kept it running through the team's changes.", "body": []}, {"heading": "What I learned\nAgents need budgets and guardrails as much as prompts. Every run has a hard cap on model calls, tools and time.", "body": []}],
+    sections: [{"heading": "What it is", "body": ["A seven-step multi-agent workflow: a listener turns the recording into speaker-labelled turns, a coordinator plans the work, a research agent runs agentic retrieval over course material, and a judge, an auditor and a feedback agent turn the evidence into feedback. Nothing reaches students until the professor approves it."]}, {"heading": "What I did", "body": ["Led development and authored most of the merged pull requests. I deployed the demo on my own server and kept it running through the team's changes."]}, {"heading": "What I learned", "body": ["Agents need budgets and guardrails as much as prompts. Every run has a hard cap on model calls, tools and time."]}],
     highlights: [{"value": "7", "label": "agent steps"}, {"value": "6", "label": "person team"}],
   },
   {
@@ -101,7 +101,7 @@ export const projects: Project[] = [
     order: 2,
     cover: { src: connectsphere_c4_container, alt: "C4 container diagram of ConnectSphere", width: 1004, height: 872 },
     gallery: [{ src: connectsphere_c4_context, alt: "C4 context diagram showing every user role around ConnectSphere", width: 1282, height: 1052, caption: "System context: every role the platform serves" }],
-    sections: [{"heading": "How we work\nA six-person Scrum team with weekly sprints and rotating Dev, PO and Scrum Master roles, working through a backlog of 161 stories. Work ships as stacked pull requests with unit, integration and Playwright tests in CI.", "body": []}, {"heading": "What I did\nShipped 13 stories and about 370 test cases, including venue records, request lists, auto-assignment and reservation release.", "body": []}],
+    sections: [{"heading": "How we work", "body": ["A six-person Scrum team with weekly sprints and rotating Dev, PO and Scrum Master roles, working through a backlog of 161 stories. Work ships as stacked pull requests with unit, integration and Playwright tests in CI."]}, {"heading": "What I did", "body": ["Shipped 13 stories and about 370 test cases, including venue records, request lists, auto-assignment and reservation release."]}],
     highlights: [{"value": "161", "label": "story backlog"}, {"value": "13", "label": "stories I shipped"}, {"value": "~370", "label": "test cases"}],
   },
   {
@@ -190,7 +190,7 @@ export const projects: Project[] = [
     cover: { src: metromind_dashboard, alt: "MetroMind dashboard: Singapore demand map, forecasts and agent activity", width: 1600, height: 932 },
     gallery: [{ src: metromind_agent_pipeline, alt: "Slide showing five agents working as a pipeline", width: 1600, height: 900, caption: "Monitor, Planner, Policy, Coordinator, Executor" },
       { src: metromind_forecasting, alt: "Slide explaining how the forecasting works", width: 1600, height: 900, caption: "How the forecasting works" }],
-    sections: [{"heading": "What it is\nMonitor, Planner, Policy, Coordinator and Executor agents with an EMA demand forecast, cost units and a human escalation path.", "body": []}],
+    sections: [{"heading": "What it is", "body": ["Monitor, Planner, Policy, Coordinator and Executor agents with an EMA demand forecast, cost units and a human escalation path."]}],
     highlights: [{"value": "5", "label": "agents"}, {"value": "3 h", "label": "forecast horizon"}],
   },
   {
@@ -227,7 +227,7 @@ export const projects: Project[] = [
     featured: true,
     order: 40,
     gallery: [],
-    sections: [{"heading": "What it is\nA live energy-flow map from grid, PV and battery through the building to the EV chargers, with dashboards for cost, CO2 and peak demand, plus spot-price invoicing.", "body": []}, {"heading": "What I did\nBuilt it from the ground up in 12 weeks with AI coding agents and led day-to-day development in a three-person team. I wrote a Raspberry Pi edge agent that reads four KEBA chargers and a KOSTAL inverter over Modbus TCP. I also built an \"Ask AI\" tool-calling agent that answers energy questions from the database. It is read-only and never stores chats.", "body": []}],
+    sections: [{"heading": "What it is", "body": ["A live energy-flow map from grid, PV and battery through the building to the EV chargers, with dashboards for cost, CO2 and peak demand, plus spot-price invoicing."]}, {"heading": "What I did", "body": ["Built it from the ground up in 12 weeks with AI coding agents and led day-to-day development in a three-person team. I wrote a Raspberry Pi edge agent that reads four KEBA chargers and a KOSTAL inverter over Modbus TCP. I also built an \"Ask AI\" tool-calling agent that answers energy questions from the database. It is read-only and never stores chats."]}],
     highlights: [{"value": "12 weeks", "label": "from zero to product"}, {"value": "2", "label": "customers preparing pilots"}],
   },
   {
@@ -263,7 +263,7 @@ export const projects: Project[] = [
     order: 1,
     cover: { src: silentlink_dashboard, alt: "SilentLink research workspace overview", width: 1600, height: 1000 },
     gallery: [{ src: silentlink_dashboard_scroll, alt: "SilentLink recording library and signal explorer", width: 1600, height: 1000, caption: "From observation to evidence: the recording library" }],
-    sections: [{"heading": "What it is\nAn iPhone recorder for the processed motion Apple exposes from AirPods, with a private research API and dashboard behind it.", "body": []}, {"heading": "Why it is honest about its limits\nWhether this signal holds speech information is an open question. The project measures first and makes no claims.", "body": []}],
+    sections: [{"heading": "What it is", "body": ["An iPhone recorder for the processed motion Apple exposes from AirPods, with a private research API and dashboard behind it."]}, {"heading": "Why it is honest about its limits", "body": ["Whether this signal holds speech information is an open question. The project measures first and makes no claims."]}],
     highlights: [],
   },
   {
@@ -279,7 +279,7 @@ export const projects: Project[] = [
     featured: true,
     order: 3,
     gallery: [],
-    sections: [{"heading": "Why\nI wanted one place where every course's slides become something I can revise from.", "body": []}],
+    sections: [{"heading": "Why", "body": ["I wanted one place where every course's slides become something I can revise from."]}],
     highlights: [],
   },
   {
@@ -301,7 +301,7 @@ export const projects: Project[] = [
       { src: treatsure_home_scroll_2, alt: "Business verticals section on treatsure.co", width: 1600, height: 1000, caption: "Business verticals" },
       { src: treatsure_our_journey, alt: "Our journey timeline page on treatsure.co", width: 1440, height: 900, caption: "Our journey timeline" },
       { src: treatsure_mobile, alt: "treatsure.co on a phone", width: 780, height: 1688, caption: "Mobile" }],
-    sections: [{"heading": "What it is\nA bilingual marketing site with a CMS, plus a read-only sales dashboard over more than 1,500 orders a month.", "body": []}, {"heading": "What I did\nShipped the relaunch in 9 weeks by leading a workflow of Claude Code agents: parallel QA agents on isolated database copies, agent review before every merge, and a translate, critique and refine pipeline for Chinese copy. The owner edits 13 CMS sections alone, and that cut average site-update time by 80%. The dashboard turned hours of monthly Excel reporting into minutes.", "body": []}, {"heading": "Trade-off\nThe dashboard deliberately uses no AI. Finance numbers must be deterministic.", "body": []}],
+    sections: [{"heading": "What it is", "body": ["A bilingual marketing site with a CMS, plus a read-only sales dashboard over more than 1,500 orders a month."]}, {"heading": "What I did", "body": ["Shipped the relaunch in 9 weeks by leading a workflow of Claude Code agents: parallel QA agents on isolated database copies, agent review before every merge, and a translate, critique and refine pipeline for Chinese copy. The owner edits 13 CMS sections alone, and that cut average site-update time by 80%. The dashboard turned hours of monthly Excel reporting into minutes."]}, {"heading": "Trade-off", "body": ["The dashboard deliberately uses no AI. Finance numbers must be deterministic."]}],
     highlights: [{"value": "9 weeks", "label": "to relaunch"}, {"value": "80%", "label": "faster site updates"}, {"value": "1,500+", "label": "orders a month on the dashboard"}],
   },
 ];
